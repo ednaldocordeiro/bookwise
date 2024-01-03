@@ -16,8 +16,8 @@ const config: Config = {
         'bw-green-200': '#255D6A',
         'bw-green-300': '#0A313C',
 
-        'bw-purple-200': '#8381D9',
-        'bw-purple-300': '#2A2879',
+        'bw-purple-100': '#8381D9',
+        'bw-purple-200': '#2A2879',
 
         'bw-gray-100': '#F8F9FC',
         'bw-gray-200': '#E6E8F2',

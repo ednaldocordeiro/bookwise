@@ -12,7 +12,7 @@ const nunitoSans = NunitoSans({
 export const metadata: Metadata = {
   title: {
     template: '%s | BookWise',
-    default: 'bookWise',
+    default: 'BookWise',
   },
 }
 
@@ -22,8 +22,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={nunitoSans.variable}>
-      <body>{children}</body>
+    <html lang="pt" className={nunitoSans.variable}>
+      <body className="bg-bw-gray-800 text-bw-gray-100 antialiased">
+        {children}
+      </body>
     </html>
   )
 }
