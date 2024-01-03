@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: 'var(--font-nunito_sans)'
+        sans: 'var(--font-nunito_sans)',
       },
       colors: {
         'bw-green-100': '#50B2C0',
@@ -29,9 +29,11 @@ const config: Config = {
         'bw-gray-800': '#0E1116',
       },
       backgroundImage: {
-        'bw-gradient-horizontal': 'linear-gradient(90deg, rgba(127,209,204,1) 0%, rgba(150,148,245,1) 100%)',
-        'bw-gradient-vertical': 'linear-gradient(180deg, rgba(127,209,204,1) 0%, rgba(150,148,245,1) 100%)'
-      }
+        'bw-gradient-horizontal':
+          'linear-gradient(90deg, rgba(127,209,204,1) 0%, rgba(150,148,245,1) 100%)',
+        'bw-gradient-vertical':
+          'linear-gradient(180deg, rgba(127,209,204,1) 0%, rgba(150,148,245,1) 100%)',
+      },
     },
   },
   plugins: [],
