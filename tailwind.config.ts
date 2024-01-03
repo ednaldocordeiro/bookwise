@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: 'var(--font-nunito_sans)'
+      },
       colors: {
         'bw-green-100': '#50B2C0',
         'bw-green-200': '#255D6A',
