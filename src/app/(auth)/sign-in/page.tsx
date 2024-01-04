@@ -1,6 +1,7 @@
 import { Rocket } from 'lucide-react'
 import Image from 'next/image'
-import { getServerSession } from 'next-auth/next'
+import { redirect } from 'next/navigation'
+import { getServerSession } from 'next-auth'
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
 
@@ -8,7 +9,11 @@ import { GithubProviderButton } from './github-provider-button'
 
 export default async function SignInPage() {
   const session = await getServerSession(authOptions)
-  console.log(session)
+
+  if (session !== null) {
+    redirect('/')
+  }
+
   return (
     <div className="flex h-screen gap-6 p-5">
       <div className="flex h-full items-center justify-center">
@@ -41,7 +46,7 @@ export default async function SignInPage() {
             </div>
             <GithubProviderButton />
             <div className="flex w-full gap-5 rounded-lg bg-gray-600 px-6 py-4">
-              <Rocket className="text-bw-purple-100 h-5 w-5" />
+              <Rocket className="h-5 w-5 text-bw-purple-100" />
               <p className="font-bold">Entrar como visitante</p>
             </div>
           </div>
