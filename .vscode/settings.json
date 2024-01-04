@@ -4,4 +4,8 @@
     "source.addMissingImports": "explicit",
     "source.fixAll.eslint": "explicit"
   },
+  "editor.formatOnSave": true,
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
 }
