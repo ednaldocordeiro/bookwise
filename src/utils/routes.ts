@@ -16,13 +16,13 @@ export const routes: Route[] = [
   },
   {
     label: 'Explorar',
-    path: '/explorar',
+    path: '/explore',
     requireSession: false,
     icon: Search,
   },
   {
     label: 'Perfil',
-    path: '/perfil',
+    path: '/profile',
     requireSession: true,
     icon: User,
   },

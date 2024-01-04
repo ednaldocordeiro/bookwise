@@ -4,13 +4,9 @@ import { getServerSession } from 'next-auth'
 import { ReactNode } from 'react'
 
 import { authOptions } from '../api/auth/[...nextauth]/auth-options'
-import { Routes } from './routes'
+import { Routes } from './(home)/routes'
 
-export default async function HomeLayout({
-  children,
-}: {
-  children: ReactNode
-}) {
+export default async function AppLayout({ children }: { children: ReactNode }) {
   const session = await getServerSession(authOptions)
   return (
     <main className="flex h-screen gap-6 p-5">
