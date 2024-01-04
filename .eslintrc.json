@@ -1,5 +1,5 @@
 {
-  "extends": ["@rocketseat/eslint-config/next"],
+  "extends": ["next/core-web-vitals", "@rocketseat/eslint-config/next"],
   "plugins": ["eslint-plugin-simple-import-sort"],
   "rules": {
     "simple-import-sort/imports": "error"

@@ -6,6 +6,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
 
 import { GithubProviderButton } from './github-provider-button'
+import { GoogleProviderButton } from './google-provider-button'
 
 export default async function SignInPage() {
   const session = await getServerSession(authOptions)
@@ -34,16 +35,7 @@ export default async function SignInPage() {
             <p>Faça seu login ou acesse como visitante.</p>
           </div>
           <div className="flex w-full flex-col items-center gap-4">
-            <div className="flex w-full gap-5 rounded-lg bg-gray-600 px-6 py-4">
-              <Image
-                src="/google-logo.png"
-                alt=""
-                width={20}
-                height={20}
-                className="h-5 w-5"
-              />
-              <p className="font-bold">Entrar com o Google</p>
-            </div>
+            <GoogleProviderButton />
             <GithubProviderButton />
             <div className="flex w-full gap-5 rounded-lg bg-gray-600 px-6 py-4">
               <Rocket className="h-5 w-5 text-bw-purple-100" />
