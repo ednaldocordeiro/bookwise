@@ -1,5 +1,11 @@
-export default function Home() {
+import { LineChart, LogOut, Search, User } from 'lucide-react'
+import Image from 'next/image'
+import { getServerSession } from 'next-auth'
+
+export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    <div>
+      <h1 className="text-3xl font-bold">Home</h1>
+    </div>
   )
 }
