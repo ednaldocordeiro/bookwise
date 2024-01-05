@@ -4,11 +4,11 @@ import { SideBar } from '@/components/sidebar'
 
 export default async function AppLayout({ children }: { children: ReactNode }) {
   return (
-    <main className="grid h-screen grid-cols-6 gap-6">
-      <div className="col-span-1 p-5">
+    <main className="flex h-screen gap-6">
+      <div className="p-5">
         <SideBar />
       </div>
-      <div className="col-span-5 overflow-y-scroll">{children}</div>
+      <div className="flex-1 overflow-y-scroll">{children}</div>
     </main>
   )
 }

@@ -4,12 +4,12 @@ import { Feed } from './feed'
 
 export default async function Home() {
   return (
-    <div className="flex flex-1 flex-col p-10">
-      <header className="flex items-center gap-3">
+    <div className="flex flex-1 flex-col">
+      <header className="sticky top-0 mt-5 flex items-center gap-3 bg-bw-gray-800/15 p-3 backdrop-blur-md">
         <LineChart className="text-3xl text-bw-green-100" />
         <h1 className="text-2xl font-bold leading-tight">Início</h1>
       </header>
-      <div className="mt-10 grid grid-cols-3 gap-16">
+      <div className="mb-5 grid grid-cols-3 gap-16">
         <div className="col-span-2 h-full w-full">
           <Feed />
         </div>
