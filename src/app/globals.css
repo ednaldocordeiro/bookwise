@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilos para a barra de rolagem no geral */
+/* Estilos da barra vertical */
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+  background: #252D4A; /* Cor do fundo da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8381D9; /* Cor da alça da barra de rolagem */
+}
+
+/* Estilos da barra horizontal (se aplicável) */
+::-webkit-scrollbar-track-horizontal {
+  background: #252D4A; /* Cor do fundo da barra de rolagem horizontal */
+}
+
+::-webkit-scrollbar-thumb-horizontal {
+  background: #8381D9; /* Cor da alça da barra de rolagem horizontal */
+}
