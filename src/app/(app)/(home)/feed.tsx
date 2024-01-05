@@ -16,7 +16,7 @@ async function getFeed(): Promise<FeedItem[] | undefined> {
 export async function Feed() {
   const feed = await getFeed()
   return (
-    <section className="flex h-full flex-col items-center">
+    <section className="flex h-full flex-col items-center gap-4">
       <div className="mb-4 flex w-full">
         <h2 className="flex text-left text-sm text-bw-gray-100">
           Avaliações mais recentes
