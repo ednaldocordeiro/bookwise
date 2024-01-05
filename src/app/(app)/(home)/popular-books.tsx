@@ -17,7 +17,7 @@ export function PopularBooks() {
           <ChevronRight className="size-4" />
         </Link>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex w-full flex-col gap-3">
         <div className="flex gap-5 rounded-lg bg-bw-gray-700 px-5 py-4">
           <Image
             src="/images/books/a-revolucao-dos-bixos.png"

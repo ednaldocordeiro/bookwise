@@ -22,7 +22,7 @@ export async function Feed() {
           Avaliações mais recentes
         </h2>
       </div>
-      <div className="flex h-full flex-col gap-3">
+      <div className="flex h-full w-full flex-col gap-3">
         {feed &&
           feed?.map((feedItem) => <FeedCard key={feedItem.id} {...feedItem} />)}
       </div>

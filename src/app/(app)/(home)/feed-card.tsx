@@ -14,7 +14,7 @@ type FeedCardProps = FeedItem
 
 export async function FeedCard(props: FeedCardProps) {
   return (
-    <div className="flex max-w-[720px] flex-col gap-8 rounded-lg bg-bw-gray-700 p-6">
+    <div className="flex w-full flex-col gap-8 rounded-lg bg-bw-gray-700 p-6">
       <header className="flex items-center justify-between">
         <div className="flex flex-1 items-center gap-4">
           <Image
