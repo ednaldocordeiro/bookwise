@@ -1,7 +1,14 @@
+import 'dayjs/locale/pt-br'
+
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { Star } from 'lucide-react'
 import Image from 'next/image'
 
 import { FeedItem } from '@/data/feed'
+
+dayjs.extend(relativeTime)
+dayjs.locale('pt-BR')
 
 type FeedCardProps = FeedItem
 
@@ -19,7 +26,9 @@ export async function FeedCard(props: FeedCardProps) {
           />
           <div>
             <p className="text-base text-bw-gray-100">{props.user.name}</p>
-            <span className="text-sm text-bw-gray-400">Hoje</span>
+            <span className="text-sm text-bw-gray-400">
+              {dayjs().to(dayjs(props.created_at))}
+            </span>
           </div>
         </div>
         <div className="flex gap-1">

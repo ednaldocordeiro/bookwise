@@ -4,7 +4,7 @@ export async function GET() {
   try {
     const rates = await prisma.rating.findMany({
       orderBy: {
-        created_at: 'asc',
+        created_at: 'desc',
       },
       take: 10,
       include: {
