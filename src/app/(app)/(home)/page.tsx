@@ -1,5 +1,7 @@
 import { LineChart } from 'lucide-react'
 
+import { Feed } from './feed'
+
 export default async function Home() {
   return (
     <div className="flex flex-1 flex-col p-10">
@@ -9,7 +11,7 @@ export default async function Home() {
       </header>
       <div className="mt-10 grid grid-cols-3 gap-16">
         <div className="col-span-2 h-full w-full">
-          <h1>Coluna 1</h1>
+          <Feed />
         </div>
         <div className="col-span-1 h-full w-full">
           <h1>Coluna 2</h1>

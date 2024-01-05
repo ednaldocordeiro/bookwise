@@ -11,6 +11,8 @@ import { GoogleProviderButton } from './google-provider-button'
 export default async function SignInPage() {
   const session = await getServerSession(authOptions)
 
+  console.log(session)
+
   if (session !== null) {
     redirect('/')
   }
