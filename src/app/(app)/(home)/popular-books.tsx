@@ -11,7 +11,7 @@ export function PopularBooks() {
           Livros populares
         </h2>
         <Link
-          href="/"
+          href="/explore"
           className="flex items-center gap-2 text-sm text-bw-purple-100"
         >
           <span>Ver todos</span>
