@@ -16,7 +16,7 @@ export async function GET() {
       GROUP BY 
         b.id
       ORDER BY 
-        nameaaa DESC
+        name ASC
     `
 
     return Response.json({ books })

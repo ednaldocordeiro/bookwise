@@ -20,8 +20,11 @@ export async function GET() {
       LIMIT 
         5
     `
-    return Response.json(popularBooks)
+    return Response.json({ books: popularBooks })
   } catch (error) {
-    return Response.json({ message: 'Não foi possível encontrar os livros' })
+    return Response.json({
+      message: 'Não foi possível encontrar os livros',
+      books: [],
+    })
   }
 }

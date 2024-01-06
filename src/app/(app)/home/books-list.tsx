@@ -2,7 +2,9 @@ import { BookCard } from '@/components/book-card'
 import { Book } from '@/data/popular-books'
 import { api } from '@/utils/api'
 
-async function getPopularBook(): Promise<Book[] | undefined> {
+async function getPopularBook(): Promise<
+  { message?: string; books: Book[] } | undefined
+> {
   try {
     const response = await api('/books/popular', {
       next: {
@@ -11,22 +13,21 @@ async function getPopularBook(): Promise<Book[] | undefined> {
     })
     const books = response.json()
 
-    console.log(response)
-
-    if (response.status !== 200) throw new Error()
-
     return books
   } catch (error) {
-    return []
+    return {
+      books: [],
+      message: 'Não foi possível carregar os livros.',
+    }
   }
 }
 
 export async function BooksList() {
-  const books = await getPopularBook()
+  const data = await getPopularBook()
   return (
     <div className="flex w-full flex-col gap-3">
-      {books &&
-        books?.map((book) => {
+      {data?.books &&
+        data?.books?.map((book) => {
           return <BookCard key={book.id} {...book} />
         })}
     </div>
