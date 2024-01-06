@@ -1,4 +1,4 @@
-export interface PopularBook {
+export interface Book {
   id: string
   cover_url: string
   name: string
