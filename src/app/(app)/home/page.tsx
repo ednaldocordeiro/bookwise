@@ -1,4 +1,5 @@
 import { LineChart } from 'lucide-react'
+import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { LoadFeed } from '@/components/content-loaders/feed'
@@ -6,6 +7,10 @@ import { LoaderPopularBooks } from '@/components/content-loaders/popular-books'
 
 import { Feed } from './feed'
 import { PopularBooks } from './popular-books'
+
+export const metadata: Metadata = {
+  title: 'Início',
+}
 
 export default async function Home() {
   return (
