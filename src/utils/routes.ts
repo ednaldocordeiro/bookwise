@@ -10,7 +10,7 @@ interface Route {
 export const routes: Route[] = [
   {
     label: 'Início',
-    path: '/',
+    path: '/home',
     requireSession: false,
     icon: LineChart,
   },
