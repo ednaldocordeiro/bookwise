@@ -5,7 +5,11 @@ import { FeedCard } from './feed-card'
 
 async function getFeed(): Promise<FeedItem[] | undefined> {
   try {
-    const response = await api('/feed')
+    const response = await api('/feed', {
+      next: {
+        revalidate: 60 * 30, // 30 min
+      },
+    })
     const feed = await response.json()
     return feed.rates
   } catch (error) {

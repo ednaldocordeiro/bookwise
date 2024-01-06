@@ -6,7 +6,11 @@ import { api } from '@/utils/api'
 
 async function getPopularBook(): Promise<PopularBook[] | undefined> {
   try {
-    const response = await api('/books/popular')
+    const response = await api('/books/popular', {
+      next: {
+        revalidate: 60 * 30, // 30 min
+      },
+    })
     const books = response.json()
 
     return books
