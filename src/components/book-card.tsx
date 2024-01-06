@@ -25,7 +25,7 @@ export function BookCard(props: BookCardProps) {
         <div>
           <Link
             href={`/books/${props.id}`}
-            className="line-clamp-3 text-xl font-bold text-bw-gray-100"
+            className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100"
           >
             {props.name}
           </Link>
