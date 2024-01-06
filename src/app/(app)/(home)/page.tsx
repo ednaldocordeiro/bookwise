@@ -1,4 +1,8 @@
 import { LineChart } from 'lucide-react'
+import { Suspense } from 'react'
+
+import { LoadFeed } from '@/components/content-loaders/feed'
+import { LoaderPopularBooks } from '@/components/content-loaders/popular-books'
 
 import { Feed } from './feed'
 import { PopularBooks } from './popular-books'
@@ -12,10 +16,14 @@ export default async function Home() {
       </header>
       <div className="mb-5 mt-7 grid grid-cols-3 gap-16">
         <div className="col-span-2 h-full w-full">
-          <Feed />
+          <Suspense fallback={<LoadFeed />}>
+            <Feed />
+          </Suspense>
         </div>
         <div className="col-span-1 h-full w-full">
-          <PopularBooks />
+          <Suspense fallback={<LoaderPopularBooks />}>
+            <PopularBooks />
+          </Suspense>
         </div>
       </div>
     </div>
