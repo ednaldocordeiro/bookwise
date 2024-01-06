@@ -24,7 +24,7 @@ export async function BooksList() {
           return (
             <div
               key={book.id}
-              className="flex gap-5 rounded-lg bg-bw-gray-700 px-5 py-4"
+              className="flex gap-5 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 px-5 py-4 transition hover:border-bw-gray-600"
             >
               <Image
                 src={book.cover_url}
