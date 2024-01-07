@@ -8,7 +8,7 @@ const buttonVariants = cva('rounded-full border px-4 py-1', {
   variants: {
     active: {
       true: 'border-bw-purple-200 bg-bw-purple-200',
-      false: ' border-bw-purple-100 bg-transparent text-bw-purple-100',
+      false: 'border-bw-purple-100 bg-transparent text-bw-purple-100',
     },
   },
   defaultVariants: {

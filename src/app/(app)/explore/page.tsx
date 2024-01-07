@@ -1,4 +1,7 @@
 import { Search } from 'lucide-react'
+import { Suspense } from 'react'
+
+import { LoaderCategories } from '@/components/content-loaders/categories'
 
 import { BooksList } from './books-list'
 import { CategoriesWrapper } from './categories-wrapper'
@@ -21,7 +24,9 @@ export default function Explore({ searchParams }: ExploreProps) {
         <SearchForm />
       </header>
       <div className="mt-8 flex h-full w-full flex-col gap-6">
-        <CategoriesWrapper />
+        <Suspense fallback={<LoaderCategories />}>
+          <CategoriesWrapper />
+        </Suspense>
         <BooksList category={searchParams.category} />
       </div>
     </div>
