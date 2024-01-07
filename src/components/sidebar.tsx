@@ -2,8 +2,8 @@ import { LogOut } from 'lucide-react'
 import Image from 'next/image'
 import { getServerSession } from 'next-auth'
 
-import { Routes } from '@/app/(app)/home/routes'
 import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
+import { Routes } from '@/components/routes'
 
 export async function SideBar() {
   const session = await getServerSession(authOptions)
