@@ -1,11 +1,12 @@
 import { Category } from '@/data/category'
 import { api } from '@/utils/api'
 
-import { CategoryButton } from './category-button'
+import { CategoryItems } from './category-items'
 
-async function getCategories(): Promise<
-  { message?: string; categories: Category[] } | undefined
-> {
+async function getCategories(): Promise<{
+  message?: string
+  categories: Category[]
+}> {
   try {
     const response = await api('/books/categories')
     const categories = await response.json()
@@ -19,15 +20,11 @@ async function getCategories(): Promise<
   }
 }
 
-export async function CategoriesList() {
+export async function CategoriesWrapper() {
   const data = await getCategories()
   return (
     <div className="flex items-center justify-start gap-3 overflow-x-scroll py-2">
-      <CategoryButton name="Tudo" active />
-      {data &&
-        data.categories.map((category) => {
-          return <CategoryButton key={category.id} name={category.name} />
-        })}
+      <CategoryItems items={data.categories} />
     </div>
   )
 }

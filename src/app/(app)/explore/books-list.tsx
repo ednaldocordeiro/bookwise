@@ -2,11 +2,15 @@ import { BookCard } from '@/components/book-card'
 import { Book } from '@/data/popular-books'
 import { api } from '@/utils/api'
 
-async function getPopularBook(): Promise<
-  { message?: string; books: Book[] } | undefined
-> {
+interface BooksListProps {
+  category?: string
+}
+
+async function getPopularBook(
+  category?: string,
+): Promise<{ message?: string; books: Book[] } | undefined> {
   try {
-    const response = await api('/books', {
+    const response = await api(`/books?category=${category}`, {
       next: {
         revalidate: 60 * 30, // 30 min
       },
@@ -22,8 +26,8 @@ async function getPopularBook(): Promise<
   }
 }
 
-export async function BooksList() {
-  const data = await getPopularBook()
+export async function BooksList({ category }: BooksListProps) {
+  const data = await getPopularBook(category)
 
   return (
     <div className="grid grid-cols-4 gap-5 max-2xl:grid-cols-3 max-xl:grid-cols-2 max-lg:grid-cols-1">
