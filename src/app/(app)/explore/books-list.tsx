@@ -10,7 +10,8 @@ async function getPopularBook(
   category?: string,
 ): Promise<{ message?: string; books: Book[] } | undefined> {
   try {
-    const response = await api(`/books?category=${category}`, {
+    const url = category ? `/books?category=${category}` : '/books'
+    const response = await api(url, {
       next: {
         revalidate: 60 * 30, // 30 min
       },

@@ -1,6 +1,7 @@
 import { Search } from 'lucide-react'
 import { Suspense } from 'react'
 
+import { LoaderBooks } from '@/components/content-loaders/books'
 import { LoaderCategories } from '@/components/content-loaders/categories'
 
 import { BooksList } from './books-list'
@@ -27,7 +28,9 @@ export default function Explore({ searchParams }: ExploreProps) {
         <Suspense fallback={<LoaderCategories />}>
           <CategoriesWrapper />
         </Suspense>
-        <BooksList category={searchParams.category} />
+        <Suspense fallback={<LoaderBooks />}>
+          <BooksList category={searchParams.category} />
+        </Suspense>
       </div>
     </div>
   )

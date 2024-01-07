@@ -21,7 +21,6 @@ async function getCategories(): Promise<{
 }
 
 export async function CategoriesWrapper() {
-  await new Promise((resolve) => setTimeout(resolve, 4000))
   const data = await getCategories()
   return (
     <div className="flex items-center justify-start gap-3 overflow-x-scroll py-2">
