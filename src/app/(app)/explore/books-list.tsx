@@ -26,7 +26,7 @@ export async function BooksList() {
   const data = await getPopularBook()
 
   return (
-    <div className="mt-10 grid grid-cols-4 gap-5 max-2xl:grid-cols-3 max-xl:grid-cols-2 max-lg:grid-cols-1">
+    <div className="grid grid-cols-4 gap-5 max-2xl:grid-cols-3 max-xl:grid-cols-2 max-lg:grid-cols-1">
       {data?.books &&
         data?.books?.map((book) => {
           return (

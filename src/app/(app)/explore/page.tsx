@@ -1,6 +1,7 @@
 import { Search } from 'lucide-react'
 
 import { BooksList } from './books-list'
+import { CategoriesList } from './categories-list'
 import { SearchForm } from './search-form'
 
 export default function Explore() {
@@ -13,7 +14,10 @@ export default function Explore() {
         </div>
         <SearchForm />
       </header>
-      <BooksList />
+      <div className="mt-8 flex h-full w-full flex-col gap-6">
+        <CategoriesList />
+        <BooksList />
+      </div>
     </div>
   )
 }
