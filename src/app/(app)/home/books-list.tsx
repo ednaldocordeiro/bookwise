@@ -11,7 +11,7 @@ async function getPopularBook(): Promise<
         revalidate: 60 * 30, // 30 min
       },
     })
-    const books = response.json()
+    const books = await response.json()
 
     return books
   } catch (error) {
