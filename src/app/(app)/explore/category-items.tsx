@@ -1,9 +1,11 @@
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useCallback } from 'react'
 
 import { CategoryButton } from '@/components/category-button'
 import { Category } from '@/data/category'
+import { createQueryString } from '@/utils/createQueryString'
 
 interface CategoryItemsProps {
   items: Category[]
@@ -11,16 +13,22 @@ interface CategoryItemsProps {
 
 export function CategoryItems({ items }: CategoryItemsProps) {
   const router = useRouter()
+  const pathName = usePathname()
   const searchParams = useSearchParams()
 
   const currentCategory = searchParams.get('category')
 
+  const createQuery = useCallback(createQueryString, [searchParams])
+
   function handleSelectCategory(name: string) {
-    router.push(`/explore?category=${name}`)
+    const url = createQuery('category', name, searchParams, pathName)
+
+    router.replace(url)
   }
 
   function handleListAllBooks() {
-    router.push('/explore')
+    const url = createQuery('category', null, searchParams, pathName)
+    router.replace(url)
   }
 
   return (
