@@ -5,7 +5,10 @@ import { prisma } from '@/lib/prisma'
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = request.nextUrl
+
     const category = searchParams.get('category')
+    const query = searchParams.get('q')
+
     if (category) {
       const books = await prisma.$queryRawUnsafe(
         `
@@ -23,7 +26,7 @@ export async function GET(request: NextRequest) {
         "CategoriesOnBooks" cb ON b.id = cb.book_id
       LEFT JOIN
         "categories" ct ON ct.id = cb."categoryId"
-      WHERE ct.name = $1
+      WHERE ct.name = $1 AND b.name LIKE '%${query || ''}%'
       GROUP BY 
         b.id
       ORDER BY 
@@ -35,7 +38,7 @@ export async function GET(request: NextRequest) {
       return Response.json({ books })
     }
 
-    const books = await prisma.$queryRaw`
+    const books = await prisma.$queryRawUnsafe(`
       SELECT 
         b.id, 
         b.cover_url, 
@@ -46,11 +49,12 @@ export async function GET(request: NextRequest) {
         books b
       JOIN 
         ratings r ON b.id = r.book_id
+      WHERE b.name LIKE '%${query || ''}%'
       GROUP BY 
         b.id
       ORDER BY 
         name ASC
-    `
+    `)
 
     return Response.json({ books })
   } catch (error) {

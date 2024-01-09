@@ -32,7 +32,7 @@ export function SearchForm() {
   }
   return (
     <form
-      onClick={handleSubmit}
+      onSubmit={handleSubmit}
       className="group flex gap-6 rounded border border-bw-gray-500 px-5 py-3 focus-within:border-bw-green-200"
     >
       <input

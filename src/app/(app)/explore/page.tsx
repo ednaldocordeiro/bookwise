@@ -8,10 +8,12 @@ import { BooksList } from './books-list'
 import { CategoriesWrapper } from './categories-wrapper'
 import { SearchForm } from './search-form'
 
+export type ExploreSearchParams = {
+  category?: string
+  q?: string
+}
 interface ExploreProps {
-  searchParams: {
-    category?: 'string'
-  }
+  searchParams: ExploreSearchParams
 }
 
 export default function Explore({ searchParams }: ExploreProps) {
@@ -29,7 +31,7 @@ export default function Explore({ searchParams }: ExploreProps) {
           <CategoriesWrapper />
         </Suspense>
         <Suspense fallback={<LoaderBooks />}>
-          <BooksList category={searchParams.category} />
+          <BooksList searchParams={searchParams} />
         </Suspense>
       </div>
     </div>

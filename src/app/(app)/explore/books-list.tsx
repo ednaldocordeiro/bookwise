@@ -2,20 +2,25 @@ import { BookCard } from '@/components/book-card'
 import { Book } from '@/data/popular-books'
 import { api } from '@/utils/api'
 
+import { ExploreSearchParams } from './page'
+
 interface BooksListProps {
-  category?: string
+  searchParams: ExploreSearchParams
 }
 
 async function getPopularBook(
-  category?: string,
+  searchParams?: ExploreSearchParams,
 ): Promise<{ message?: string; books: Book[] } | undefined> {
   try {
-    const url = category ? `/books?category=${category}` : '/books'
+    const params = new URLSearchParams(searchParams)
+    const url = `/books?${params.toString()}`
+
     const response = await api(url, {
       next: {
         revalidate: 60 * 30, // 30 min
       },
     })
+
     const books = await response.json()
 
     return books
@@ -27,8 +32,8 @@ async function getPopularBook(
   }
 }
 
-export async function BooksList({ category }: BooksListProps) {
-  const data = await getPopularBook(category)
+export async function BooksList({ searchParams }: BooksListProps) {
+  const data = await getPopularBook(searchParams)
 
   return (
     <div className="grid grid-cols-4 gap-5 max-2xl:grid-cols-3 max-xl:grid-cols-2 max-lg:grid-cols-1">
