@@ -24,8 +24,6 @@ export function SearchForm() {
 
     const query = data.q.toString()
 
-    if (!query) return null
-
     const url = createQuery('q', query, searchParams, pathName)
 
     router.replace(url)
