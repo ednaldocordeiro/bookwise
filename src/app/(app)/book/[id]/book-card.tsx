@@ -1,19 +1,13 @@
 import { Star } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
 
-import { PopularBook } from '@/data/books'
+import { Book } from '@/data/books'
 
-interface BookCardProps extends PopularBook {
-  onPress?: (id: string) => void
-}
+type BookCardProps = Book
 
 export function BookCard(props: BookCardProps) {
   return (
-    <div
-      key={props.id}
-      className="flex gap-5 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 px-5 py-4 transition hover:border-bw-gray-600"
-    >
+    <div className="flex gap-5 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 px-5 py-4 transition hover:border-bw-gray-600">
       <Image
         src={props.cover_url}
         alt=""
@@ -23,12 +17,9 @@ export function BookCard(props: BookCardProps) {
       />
       <div className="flex flex-col justify-between">
         <div>
-          <Link
-            href={`/book/${props.id}`}
-            className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100"
-          >
+          <h1 className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100">
             {props.name}
-          </Link>
+          </h1>
           <span className="text-bw-gray-400">{props.author}</span>
         </div>
         <div className="flex gap-1">

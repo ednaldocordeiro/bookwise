@@ -1,5 +1,5 @@
 import { BookCard } from '@/components/book-card'
-import { Book } from '@/data/popular-books'
+import { Book } from '@/data/books'
 import { api } from '@/utils/api'
 
 async function getPopularBook(): Promise<

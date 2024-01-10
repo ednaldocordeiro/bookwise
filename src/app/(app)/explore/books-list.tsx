@@ -1,5 +1,5 @@
 import { BookCard } from '@/components/book-card'
-import { Book } from '@/data/popular-books'
+import { PopularBook } from '@/data/books'
 import { api } from '@/utils/api'
 
 import { ExploreSearchParams } from './page'
@@ -10,7 +10,7 @@ interface BooksListProps {
 
 async function getPopularBook(
   searchParams?: ExploreSearchParams,
-): Promise<{ message?: string; books: Book[] } | undefined> {
+): Promise<{ message?: string; books: PopularBook[] } | undefined> {
   try {
     const params = new URLSearchParams(searchParams)
     const url = `/books?${params.toString()}`
