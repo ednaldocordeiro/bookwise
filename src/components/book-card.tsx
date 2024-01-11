@@ -24,7 +24,7 @@ export function BookCard(props: BookCardProps) {
       <div className="flex flex-col justify-between">
         <div>
           <Link
-            href={`/book/${props.id}`}
+            href={`/books/${props.id}`}
             className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100"
           >
             {props.name}
