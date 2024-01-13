@@ -1,5 +1,7 @@
 import { User } from 'lucide-react'
 
+import { SearchForm } from './search-form'
+
 export default function Profile() {
   return (
     <div className="mx-auto my-0 flex max-w-[1600px] flex-1 flex-col p-10">
@@ -8,7 +10,9 @@ export default function Profile() {
         <h1 className="text-2xl font-bold leading-tight">Perfil</h1>
       </header>
       <div className="mb-5 mt-7 grid grid-cols-3 gap-16">
-        <div className="col-span-2 h-full w-full"></div>
+        <div className="col-span-2 h-full w-full">
+          <SearchForm />
+        </div>
         <div className="col-span-1 h-full w-full border-l-2 border-l-bw-gray-700"></div>
       </div>
     </div>
