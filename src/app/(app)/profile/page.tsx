@@ -1,6 +1,8 @@
 import { User } from 'lucide-react'
+import { Suspense } from 'react'
 
 import { SearchForm } from './search-form'
+import { UserInfo } from './user-info'
 
 export default function Profile() {
   return (
@@ -13,7 +15,11 @@ export default function Profile() {
         <div className="col-span-2 h-full w-full">
           <SearchForm />
         </div>
-        <div className="col-span-1 h-full w-full border-l-2 border-l-bw-gray-700"></div>
+        <div className="col-span-1 h-full w-full border-l-2 border-l-bw-gray-700">
+          <Suspense fallback={<p>Carregando informações do usuário</p>}>
+            <UserInfo />
+          </Suspense>
+        </div>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { Book as LRBook, Bookmark, Star } from 'lucide-react'
+import { Bookmark, BookOpen, Star } from 'lucide-react'
 import Image from 'next/image'
 
 import { Book } from '@/data/books'
@@ -54,7 +54,7 @@ export function BookCard(props: BookCardProps) {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <LRBook className="text-bw-green-100" />
+          <BookOpen className="text-bw-green-100" />
           <div>
             <span className="text-bw-gray-300">Páginas</span>
             <h1 className="line-clamp-3 text-xl font-bold text-bw-gray-100">
