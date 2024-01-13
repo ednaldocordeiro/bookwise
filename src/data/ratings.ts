@@ -1,6 +1,6 @@
 import { RatingUser } from './user'
 
-export interface Root {
+export interface Rating {
   id: string
   created_at: string
   description: string

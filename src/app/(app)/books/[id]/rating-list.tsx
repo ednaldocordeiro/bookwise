@@ -1,6 +1,7 @@
-import { Rating } from '@prisma/client'
-
+import { Rating } from '@/data/ratings'
 import { api } from '@/utils/api'
+
+import { RatingCard } from './ratind-card'
 
 interface RatingListProps {
   bookId: string
@@ -28,13 +29,16 @@ async function getRatings(
 export async function RatingList({ bookId }: RatingListProps) {
   const data = await getRatings(bookId)
 
-  console.log(data)
-
   return (
-    <div className="w-full gap-4">
+    <div className="flex w-full flex-col gap-4">
       <div className="flex justify-between">
         <span className="text-sm text-bw-gray-200">Avaliações</span>
         <button className="text-sm text-bw-purple-100">Avaliar</button>
+      </div>
+      <div className="flex flex-col gap-3">
+        {data.ratings.map((rating) => (
+          <RatingCard key={rating.id} {...rating} />
+        ))}
       </div>
     </div>
   )
