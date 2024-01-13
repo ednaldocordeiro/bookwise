@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 
+import { LoadRatings } from '@/components/content-loaders/ratings'
 import { Book } from '@/data/books'
 import { api } from '@/utils/api'
 
@@ -41,7 +42,7 @@ export default async function BookPage({ params }: BookPageProps) {
       <div className="mt-8 flex h-full w-full flex-col gap-6">
         {data.book && <BookCard {...data.book} />}
       </div>
-      <Suspense fallback={<p>carregando...</p>}>
+      <Suspense fallback={<LoadRatings />}>
         <RatingList bookId={params.id} />
       </Suspense>
     </div>
