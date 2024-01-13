@@ -2,6 +2,7 @@ import { Book } from '@/data/books'
 import { api } from '@/utils/api'
 
 import { BookCard } from './book-card'
+import { RatingList } from './rating-list'
 
 interface BookPageProps {
   params: {
@@ -34,10 +35,11 @@ export default async function BookPage({ params }: BookPageProps) {
   const data = await getBook(params.id)
 
   return (
-    <div className="mx-auto my-0 flex max-w-4xl flex-1 flex-col p-10">
+    <div className="mx-auto my-0 flex max-w-4xl flex-1 flex-col gap-10 p-10">
       <div className="mt-8 flex h-full w-full flex-col gap-6">
         {data.book && <BookCard {...data.book} />}
       </div>
+      <RatingList />
     </div>
   )
 }
