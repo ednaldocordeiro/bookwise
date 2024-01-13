@@ -14,17 +14,21 @@ export async function GET(
         id,
       },
     })
-    const categories = await prisma.category.findMany({
+
+    const categories = await prisma.categoriesOnBooks.findMany({
       where: {
-        books: {
-          every: {
-            book_id: id,
-          },
-        },
+        book_id: id,
+      },
+      select: {
+        category: true,
       },
     })
+
     const rates = await prisma.rating.aggregate({
       _avg: {
+        rate: true,
+      },
+      _count: {
         rate: true,
       },
       where: {
@@ -32,11 +36,14 @@ export async function GET(
       },
     })
 
+    const formatCategories = categories.map((item) => item.category)
+
     return Response.json({
       book: {
         ...book,
-        categories,
+        categories: formatCategories,
         rate: rates._avg.rate,
+        rates_count: rates._count.rate,
       },
     })
   } catch (error) {

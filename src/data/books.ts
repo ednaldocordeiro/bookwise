@@ -10,6 +10,10 @@ export interface Book {
     id: string
     name: string
   }[]
+  rates_count: number
 }
 
-export type PopularBook = Omit<Book, 'categories' | 'total_pages' | 'summary'>
+export type PopularBook = Omit<
+  Book,
+  'categories' | 'total_pages' | 'summary' | 'rates_count'
+>
