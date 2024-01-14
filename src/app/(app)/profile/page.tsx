@@ -1,6 +1,8 @@
 import { User } from 'lucide-react'
 import { Suspense } from 'react'
 
+import { LoaderUserInfo } from '@/components/content-loaders/user-info'
+
 import { SearchForm } from './search-form'
 import { UserInfo } from './user-info'
 
@@ -16,7 +18,7 @@ export default function Profile() {
           <SearchForm />
         </div>
         <div className="col-span-1 h-full w-full border-l-2 border-l-bw-gray-700">
-          <Suspense fallback={<p>Carregando informações do usuário</p>}>
+          <Suspense fallback={<LoaderUserInfo />}>
             <UserInfo />
           </Suspense>
         </div>
