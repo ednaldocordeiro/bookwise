@@ -1,7 +1,7 @@
 import { Rating } from '@/data/ratings'
 import { api } from '@/utils/api'
 
-import { RatingCard } from './ratind-card'
+import { RatingCard } from './rating-card'
 
 interface RatingListProps {
   bookId: string
