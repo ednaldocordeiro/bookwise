@@ -44,9 +44,11 @@ model User {
   email         String?   @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
-  accounts      Account[]
-  sessions      Session[]
-  Rating        Rating[]
+  createdAt     DateTime  @default(now())
+
+  accounts Account[]
+  sessions Session[]
+  Rating   Rating[]
 
   @@map("users")
 }
