@@ -1,15 +1,22 @@
 import dayjs from 'dayjs'
-import { Book, BookOpen, LibraryBig, SquareUserRound } from 'lucide-react'
+import {
+  Book,
+  BookDashed,
+  BookOpen,
+  LibraryBig,
+  SquareUserRound,
+} from 'lucide-react'
 import Image from 'next/image'
-import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth'
 
-import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
 import { UserInfo } from '@/data/user'
 import { api } from '@/utils/api'
 
+interface UserInfoProps {
+  userId?: string
+}
+
 async function getUserInfo(
-  id: string | undefined,
+  id?: string,
 ): Promise<{ message?: string; userInfo?: UserInfo }> {
   try {
     const response = await api(`/users/${id}`, {
@@ -26,13 +33,16 @@ async function getUserInfo(
   }
 }
 
-export async function UserInfo() {
-  const session = await getServerSession(authOptions)
-
-  const { userInfo, message } = await getUserInfo(session?.user.id)
+export async function UserInfo({ userId }: UserInfoProps) {
+  const { userInfo, message } = await getUserInfo(userId)
 
   if (!userInfo) {
-    return <p>{message}</p>
+    return (
+      <div className="flex h-full flex-col items-center justify-center gap-5">
+        <BookDashed className="h-12 w-12 text-bw-gray-400" />
+        <p className="max-w-60 text-center text-bw-gray-400">{message}</p>
+      </div>
+    )
   }
 
   return (

@@ -71,6 +71,12 @@ export async function GET(
 
     return Response.json({ userInfo })
   } catch (error) {
-    return Response.json('erro')
+    return Response.json(
+      {
+        message:
+          'Não foi possível encontrar as informações do usuário usuário.',
+      },
+      { status: 400 },
+    )
   }
 }
