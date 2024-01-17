@@ -40,7 +40,9 @@ export async function UserInfo({ userId }: UserInfoProps) {
     return (
       <div className="flex h-full flex-col items-center justify-center gap-5">
         <BookDashed className="h-12 w-12 text-bw-gray-400" />
-        <p className="max-w-60 text-center text-bw-gray-400">{message}</p>
+        <p className="max-w-60 select-none text-center text-bw-gray-400">
+          {message}
+        </p>
       </div>
     )
   }
