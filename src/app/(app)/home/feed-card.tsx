@@ -5,6 +5,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import { Star } from 'lucide-react'
 import Image from 'next/image'
 
+import { Avatar } from '@/components/avatar'
 import { FeedItem } from '@/data/feed'
 
 dayjs.extend(relativeTime)
@@ -17,12 +18,10 @@ export async function FeedCard(props: FeedCardProps) {
     <div className="flex w-full flex-col gap-8 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 p-6 transition hover:border-bw-gray-500">
       <header className="flex items-center justify-between">
         <div className="flex flex-1 items-center gap-4">
-          <Image
-            src={props.user.image}
-            alt=""
-            width={60}
-            height={60}
-            className="h-10 w-10 rounded-full"
+          <Avatar
+            image={props.user.image}
+            redirectToProfile
+            userId={props.user_id}
           />
           <div>
             <p className="text-base text-bw-gray-100">{props.user.name}</p>

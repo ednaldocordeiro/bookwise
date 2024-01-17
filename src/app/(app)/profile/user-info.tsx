@@ -6,8 +6,8 @@ import {
   LibraryBig,
   SquareUserRound,
 } from 'lucide-react'
-import Image from 'next/image'
 
+import { Avatar } from '@/components/avatar'
 import { UserInfo } from '@/data/user'
 import { api } from '@/utils/api'
 
@@ -50,13 +50,7 @@ export async function UserInfo({ userId }: UserInfoProps) {
   return (
     <div className="flex flex-col items-center gap-8">
       <div className="flex flex-1 flex-col items-center gap-5">
-        <Image
-          src={userInfo.image ?? '/person.png'}
-          alt=""
-          width={80}
-          height={80}
-          className="h-20 w-20 rounded-full"
-        />
+        <Avatar image={userInfo.image} redirectToProfile={false} size="xl" />
         <div className="flex flex-col items-center">
           <h1 className="text-xl font-bold text-bw-gray-100">
             {userInfo.name}
