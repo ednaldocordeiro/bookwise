@@ -9,7 +9,7 @@ import { UserInfo } from '@/data/user'
 import { api } from '@/utils/api'
 
 async function getUserInfo(
-  id: string,
+  id: string | undefined,
 ): Promise<{ message?: string; userInfo?: UserInfo }> {
   try {
     const response = await api(`/users/${id}`, {
@@ -29,11 +29,7 @@ async function getUserInfo(
 export async function UserInfo() {
   const session = await getServerSession(authOptions)
 
-  if (!session) {
-    redirect('/')
-  }
-
-  const { userInfo, message } = await getUserInfo(session.user.id)
+  const { userInfo, message } = await getUserInfo(session?.user.id)
 
   if (!userInfo) {
     return <p>{message}</p>

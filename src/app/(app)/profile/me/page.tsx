@@ -3,8 +3,8 @@ import { Suspense } from 'react'
 
 import { LoaderUserInfo } from '@/components/content-loaders/user-info'
 
-import { SearchForm } from './search-form'
-import { UserInfo } from './user-info'
+import { SearchForm } from '../search-form'
+import { UserInfo } from '../user-info'
 
 export default function Profile() {
   return (

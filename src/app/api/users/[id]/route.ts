@@ -6,45 +6,45 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  // try {
-  const { id } = params
+  try {
+    const { id } = params
 
-  const user = await prisma.user.findUniqueOrThrow({
-    where: {
-      id,
-    },
-    select: {
-      name: true,
-      image: true,
-      createdAt: true,
-    },
-  })
+    const user = await prisma.user.findUniqueOrThrow({
+      where: {
+        id,
+      },
+      select: {
+        name: true,
+        image: true,
+        createdAt: true,
+      },
+    })
 
-  const userBooksRatings = await prisma.book.count({
-    where: {
-      ratings: {
-        some: {
-          user_id: id,
+    const userBooksRatings = await prisma.book.count({
+      where: {
+        ratings: {
+          some: {
+            user_id: id,
+          },
         },
       },
-    },
-  })
+    })
 
-  const userBooksAuthor = await prisma.book.groupBy({
-    by: ['author'],
-    where: {
-      ratings: {
-        some: {
-          user_id: id,
+    const userBooksAuthor = await prisma.book.groupBy({
+      by: ['author'],
+      where: {
+        ratings: {
+          some: {
+            user_id: id,
+          },
         },
       },
-    },
-    _sum: {
-      total_pages: true,
-    },
-  })
+      _sum: {
+        total_pages: true,
+      },
+    })
 
-  const categoryMoreRead: { name: string | null }[] = await prisma.$queryRaw`
+    const categoryMoreRead: { name: string | null }[] = await prisma.$queryRaw`
       SELECT c.name FROM categories c
       JOIN "CategoriesOnBooks" cb ON cb."categoryId" = c.id
       JOIN books b ON b.id = cb.book_id
@@ -55,22 +55,22 @@ export async function GET(
       LIMIT 1;
     `
 
-  const totalPagesRead = userBooksAuthor.reduce((totalPages, author) => {
-    if (author._sum === null || author._sum.total_pages === null)
-      return totalPages
-    return author._sum.total_pages + totalPages
-  }, 0)
+    const totalPagesRead = userBooksAuthor.reduce((totalPages, author) => {
+      if (author._sum === null || author._sum.total_pages === null)
+        return totalPages
+      return author._sum.total_pages + totalPages
+    }, 0)
 
-  const userInfo = {
-    ...user,
-    evaluatedBooks: userBooksRatings,
-    authorsRead: userBooksAuthor.length,
-    totalPagesRead,
-    categoryMoreRead: categoryMoreRead[0]?.name || null,
+    const userInfo = {
+      ...user,
+      evaluatedBooks: userBooksRatings,
+      authorsRead: userBooksAuthor.length,
+      totalPagesRead,
+      categoryMoreRead: categoryMoreRead[0]?.name || null,
+    }
+
+    return Response.json({ userInfo })
+  } catch (error) {
+    return Response.json('erro')
   }
-
-  return Response.json({ userInfo })
-  // } catch (error) {
-  //   return Response.json('erro')
-  // }
 }

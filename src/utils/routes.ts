@@ -22,7 +22,7 @@ export const routes: Route[] = [
   },
   {
     label: 'Perfil',
-    path: '/profile',
+    path: '/profile/me',
     requireSession: true,
     icon: User,
   },
