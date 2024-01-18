@@ -7,6 +7,7 @@ import { LoaderUserInfo } from '@/components/content-loaders/user-info'
 
 import { SearchForm } from '../search-form'
 import { UserInfo } from '../user-info'
+import { UserRatings } from '../user-ratings'
 
 export default async function Profile() {
   const session = await getServerSession(authOptions)
@@ -18,8 +19,9 @@ export default async function Profile() {
         <h1 className="text-2xl font-bold leading-tight">Perfil</h1>
       </header>
       <div className="mb-5 mt-7 grid h-full grid-cols-3 gap-16">
-        <div className="col-span-2 h-full w-full">
+        <div className="col-span-2 flex h-full w-full flex-col gap-8">
           <SearchForm />
+          <UserRatings />
         </div>
         <div className="col-span-1 h-full w-full border-l-2 border-l-bw-gray-700">
           <Suspense fallback={<LoaderUserInfo />}>

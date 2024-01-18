@@ -32,6 +32,7 @@ export async function GET(request: NextRequest) {
           id: true,
           rate: true,
           description: true,
+          created_at: true,
         },
       })
 
@@ -57,6 +58,7 @@ export async function GET(request: NextRequest) {
         id: true,
         rate: true,
         description: true,
+        created_at: true,
       },
     })
 
