@@ -48,7 +48,7 @@ export async function UserInfo({ userId }: UserInfoProps) {
   }
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="sticky top-32 flex flex-col items-center gap-8">
       <div className="flex flex-1 flex-col items-center gap-5">
         <Avatar image={userInfo.image} redirectToProfile={false} size="xl" />
         <div className="flex flex-col items-center">
