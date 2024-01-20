@@ -34,6 +34,9 @@ export async function GET(request: NextRequest) {
           description: true,
           created_at: true,
         },
+        orderBy: {
+          created_at: 'desc',
+        },
       })
 
       return Response.json({ ratings })
@@ -59,6 +62,9 @@ export async function GET(request: NextRequest) {
         rate: true,
         description: true,
         created_at: true,
+      },
+      orderBy: {
+        created_at: 'desc',
       },
     })
 
