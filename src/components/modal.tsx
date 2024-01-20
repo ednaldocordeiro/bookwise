@@ -1,0 +1,41 @@
+'use client'
+
+import { X } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { type ElementRef, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
+
+export function Modal({ children }: { children: React.ReactNode }) {
+  const router = useRouter()
+  const dialogRef = useRef<ElementRef<'dialog'>>(null)
+
+  useEffect(() => {
+    if (!dialogRef.current?.open) {
+      dialogRef.current?.showModal()
+    }
+  }, [])
+
+  function onDismiss() {
+    router.back()
+  }
+
+  return createPortal(
+    <div className="absolute bottom-0 left-0 right-0 top-0 z-[1000] flex items-center justify-center bg-black/10 backdrop-blur-md">
+      <dialog
+        ref={dialogRef}
+        className="position relative flex h-[720px] w-[50%] justify-center rounded-lg border-none bg-bw-gray-800 p-5"
+        onClose={onDismiss}
+      >
+        {children}
+        <button
+          onClick={onDismiss}
+          className="absolute right-4 top-3 border-none bg-transparent"
+        >
+          <X className="text-bw-gray-200" />
+        </button>
+      </dialog>
+    </div>,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    document.getElementById('modal-root')!,
+  )
+}

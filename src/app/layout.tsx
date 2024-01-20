@@ -25,6 +25,7 @@ export default function RootLayout({
     <html lang="pt" className={nunitoSans.variable}>
       <body className="bg-bw-gray-800 text-bw-gray-100 antialiased">
         {children}
+        <div id="modal-root" />
       </body>
     </html>
   )

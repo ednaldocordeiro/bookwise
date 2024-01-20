@@ -41,7 +41,7 @@ export function RatingCard(props: RatingCardProps) {
           })}
         </div>
       </header>
-      <p>{props.description}</p>
+      <p className="text-gray-200">{props.description}</p>
     </div>
   )
 }
