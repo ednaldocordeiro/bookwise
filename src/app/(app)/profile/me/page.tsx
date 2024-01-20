@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
 import { LoaderUserInfo } from '@/components/content-loaders/user-info'
+import { LoaderUserRatings } from '@/components/content-loaders/user-ratings'
 
 import { SearchForm } from '../search-form'
 import { UserInfo } from '../user-info'
@@ -21,7 +22,9 @@ export default async function Profile() {
       <div className="mb-5 mt-7 grid h-full grid-cols-3 gap-16">
         <div className="col-span-2 flex h-full w-full flex-col gap-8">
           <SearchForm />
-          <UserRatings />
+          <Suspense fallback={<LoaderUserRatings />}>
+            <UserRatings userId={session?.user.id} />
+          </Suspense>
         </div>
         <div className="col-span-1 h-full w-full border-l-2 border-l-bw-gray-700">
           <Suspense fallback={<LoaderUserInfo />}>
