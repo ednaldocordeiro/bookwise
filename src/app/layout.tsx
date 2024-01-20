@@ -2,6 +2,9 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 import { Nunito_Sans as NunitoSans } from 'next/font/google'
+import { getServerSession } from 'next-auth'
+
+import { SessionProvider } from '@/contexts/session'
 
 const nunitoSans = NunitoSans({
   subsets: ['latin'],
@@ -16,16 +19,19 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const session = await getServerSession()
   return (
     <html lang="pt" className={nunitoSans.variable}>
       <body className="bg-bw-gray-800 text-bw-gray-100 antialiased">
-        {children}
-        <div id="modal-root" />
+        <SessionProvider session={session}>
+          {children}
+          <div id="modal-root" />
+        </SessionProvider>
       </body>
     </html>
   )
