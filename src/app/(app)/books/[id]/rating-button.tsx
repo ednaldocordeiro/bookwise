@@ -10,7 +10,7 @@ export function RatingButton() {
   console.log(session)
 
   async function handleRatingBook() {
-    router.push('/')
+    router.push('/sign-in')
   }
 
   return (
