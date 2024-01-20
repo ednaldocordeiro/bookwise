@@ -53,10 +53,10 @@ export async function UserRatings({ userId }: UserRatingProps) {
   }
 
   return (
-    <div className="mb-20 flex flex-col gap-6">
+    <section className="mb-20 flex flex-col gap-6">
       {ratings.map((rating) => (
         <RatingCard key={rating.id} {...rating} />
       ))}
-    </div>
+    </section>
   )
 }
