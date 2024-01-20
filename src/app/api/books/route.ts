@@ -26,7 +26,9 @@ export async function GET(request: NextRequest) {
         "CategoriesOnBooks" cb ON b.id = cb.book_id
       LEFT JOIN
         "categories" ct ON ct.id = cb."categoryId"
-      WHERE ct.name = $1 AND b.name LIKE '%${query || ''}%'
+      WHERE b.name LIKE '%${query || ''}%' OR b.author LIKE '%${
+        query || ''
+      }%' AND ct.name LIKE '%${category || ''}%'
       GROUP BY 
         b.id
       ORDER BY 
@@ -45,11 +47,11 @@ export async function GET(request: NextRequest) {
         b.name, 
         b.author, 
         AVG(r.rate) as rate
-      FROM 
+      FROM
         books b
       JOIN 
         ratings r ON b.id = r.book_id
-      WHERE b.name LIKE '%${query || ''}%'
+      WHERE b.name LIKE '%${query || ''}%' OR b.author LIKE '%${query || ''}%'
       GROUP BY 
         b.id
       ORDER BY 
@@ -60,7 +62,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.log(error)
     return Response.json(
-      { message: 'Não foi possível encontrar os livros', books: [] },
+      { message: 'Não foi possível encontrar os livros' },
       { status: 403 },
     )
   }
