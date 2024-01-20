@@ -1,6 +1,7 @@
 import { Rating } from '@/data/ratings'
 import { api } from '@/utils/api'
 
+import { RatingButton } from './rating-button'
 import { RatingCard } from './rating-card'
 
 interface RatingListProps {
@@ -33,7 +34,7 @@ export async function RatingList({ bookId }: RatingListProps) {
     <div className="flex w-full flex-col gap-4">
       <div className="flex justify-between">
         <span className="text-sm text-bw-gray-200">Avaliações</span>
-        <button className="text-sm text-bw-purple-100">Avaliar</button>
+        <RatingButton />
       </div>
       <div className="flex flex-col gap-3">
         {data.ratings.map((rating) => (
