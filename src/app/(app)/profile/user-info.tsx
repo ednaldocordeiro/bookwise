@@ -20,7 +20,9 @@ async function getUserInfo(
 ): Promise<{ message?: string; userInfo?: UserInfo }> {
   try {
     const response = await api(`/users/${id}`, {
-      cache: 'no-store',
+      next: {
+        revalidate: 60 * 30,
+      },
     })
 
     const data = await response.json()

@@ -14,7 +14,11 @@ async function getUserRatings(id?: string): Promise<{
   ratings: BookRating[]
 }> {
   try {
-    const response = await api(`/ratings?userId=${id}`)
+    const response = await api(`/ratings?userId=${id}`, {
+      next: {
+        revalidate: 60 * 30,
+      },
+    })
 
     const data = await response.json()
 
