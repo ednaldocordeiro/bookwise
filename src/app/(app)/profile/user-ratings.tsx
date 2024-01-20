@@ -41,6 +41,17 @@ export async function UserRatings({ userId }: UserRatingProps) {
     )
   }
 
+  if (!ratings.length) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center gap-5">
+        <BookX className="h-12 w-12 text-bw-gray-400" />
+        <p className="max-w-60 select-none text-center text-bw-gray-400">
+          Nenhuma avaliação ainda
+        </p>
+      </div>
+    )
+  }
+
   return (
     <div className="mb-20 flex flex-col gap-6">
       {ratings.map((rating) => (
