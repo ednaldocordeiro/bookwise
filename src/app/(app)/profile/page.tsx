@@ -6,9 +6,9 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
 import { LoaderUserInfo } from '@/components/content-loaders/user-info'
 import { LoaderUserRatings } from '@/components/content-loaders/user-ratings'
 
-import { SearchForm } from '../search-form'
-import { UserInfo } from '../user-info'
-import { UserRatings } from '../user-ratings'
+import { SearchForm } from './search-form'
+import { UserInfo } from './user-info'
+import { UserRatings } from './user-ratings'
 
 export type UserRatingsSearchParams = {
   q?: string

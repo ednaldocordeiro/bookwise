@@ -5,6 +5,7 @@ interface Route {
   label: string
   requireSession: boolean
   icon: LucideIcon
+  params: string[]
 }
 
 export const routes: Route[] = [
@@ -13,17 +14,20 @@ export const routes: Route[] = [
     path: '/home',
     requireSession: false,
     icon: LineChart,
+    params: [],
   },
   {
     label: 'Explorar',
     path: '/explore',
     requireSession: false,
     icon: Search,
+    params: [],
   },
   {
     label: 'Perfil',
-    path: '/profile/me',
+    path: '/profile',
     requireSession: true,
     icon: User,
+    params: ['id'],
   },
 ]

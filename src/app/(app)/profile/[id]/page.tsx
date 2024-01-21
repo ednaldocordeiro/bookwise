@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import { LoaderUserInfo } from '@/components/content-loaders/user-info'
 import { LoaderUserRatings } from '@/components/content-loaders/user-ratings'
 
-import { UserRatingsSearchParams } from '../me/page'
+import { UserRatingsSearchParams } from '../page'
 import { SearchForm } from '../search-form'
 import { UserInfo } from '../user-info'
 import { UserRatings } from '../user-ratings'

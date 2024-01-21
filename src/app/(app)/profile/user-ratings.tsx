@@ -3,7 +3,7 @@ import { BookX } from 'lucide-react'
 import { BookRating } from '@/data/ratings'
 import { api } from '@/utils/api'
 
-import { UserRatingsSearchParams } from './me/page'
+import { UserRatingsSearchParams } from './page'
 import { RatingCard } from './rating-card'
 
 interface UserRatingProps {
