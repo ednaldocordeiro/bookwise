@@ -10,7 +10,15 @@ import { SearchForm } from '../search-form'
 import { UserInfo } from '../user-info'
 import { UserRatings } from '../user-ratings'
 
-export default async function Profile() {
+export type UserRatingsSearchParams = {
+  q?: string
+}
+
+interface ProfileProps {
+  searchParams: UserRatingsSearchParams
+}
+
+export default async function Profile({ searchParams }: ProfileProps) {
   const session = await getServerSession(authOptions)
 
   return (
@@ -23,7 +31,10 @@ export default async function Profile() {
         <div className="col-span-2 flex h-full w-full flex-col gap-8">
           <SearchForm />
           <Suspense fallback={<LoaderUserRatings />}>
-            <UserRatings userId={session?.user.id} />
+            <UserRatings
+              userId={session?.user.id}
+              searchParams={searchParams}
+            />
           </Suspense>
         </div>
         <div className="col-span-1 h-full w-full border-l-2 border-l-bw-gray-700">

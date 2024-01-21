@@ -20,7 +20,7 @@ export function SearchForm() {
 
     const query = data.q.toString()
 
-    router.replace(pathName + '?' + `q=${query}`)
+    router.replace(pathName + '?' + (query ? `q=${query}` : ''))
   }
 
   return (

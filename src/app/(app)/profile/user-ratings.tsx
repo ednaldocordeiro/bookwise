@@ -3,18 +3,24 @@ import { BookX } from 'lucide-react'
 import { BookRating } from '@/data/ratings'
 import { api } from '@/utils/api'
 
+import { UserRatingsSearchParams } from './me/page'
 import { RatingCard } from './rating-card'
 
 interface UserRatingProps {
   userId?: string
+  searchParams: UserRatingsSearchParams
 }
 
-async function getUserRatings(id?: string): Promise<{
+async function getUserRatings(
+  searchParams: UserRatingsSearchParams,
+  id?: string,
+): Promise<{
   message?: string
   ratings: BookRating[]
 }> {
   try {
-    const response = await api(`/ratings?userId=${id}`, {
+    const params = new URLSearchParams(searchParams)
+    const response = await api(`/ratings?userId=${id}&${params.toString()}`, {
       next: {
         revalidate: 60 * 30,
       },
@@ -31,8 +37,8 @@ async function getUserRatings(id?: string): Promise<{
   }
 }
 
-export async function UserRatings({ userId }: UserRatingProps) {
-  const { ratings, message } = await getUserRatings(userId)
+export async function UserRatings({ userId, searchParams }: UserRatingProps) {
+  const { ratings, message } = await getUserRatings(searchParams, userId)
 
   if (message) {
     return (
