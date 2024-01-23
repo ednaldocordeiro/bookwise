@@ -26,6 +26,7 @@ export function BookCard(props: BookCardProps) {
           <Link
             href={`/books/${props.id}`}
             className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100"
+            passHref
           >
             {props.name}
           </Link>
