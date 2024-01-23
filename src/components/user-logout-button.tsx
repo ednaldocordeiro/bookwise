@@ -2,14 +2,11 @@
 
 import { LogOut } from 'lucide-react'
 import Image from 'next/image'
-import { Session } from 'next-auth'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 
-interface UserLogoutButtonProps {
-  session: Session | null
-}
+export function UserLogoutButton() {
+  const { data } = useSession()
 
-export function UserLogoutButton({ session }: UserLogoutButtonProps) {
   async function handleSignOut() {
     await signOut({
       redirect: true,
@@ -23,13 +20,13 @@ export function UserLogoutButton({ session }: UserLogoutButtonProps) {
       onClick={handleSignOut}
     >
       <Image
-        src={session?.user.image ?? ''}
+        src={data?.user.image ?? ''}
         alt=""
         width={60}
         height={60}
         className="h-8 w-8 rounded-full"
       />
-      <span>{session?.user.name}</span>
+      <span>{data?.user.name}</span>
       <LogOut className="text-red-500" />
     </button>
   )

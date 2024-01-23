@@ -2,23 +2,20 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Session } from 'next-auth'
+import { useSession } from 'next-auth/react'
 
 import { routes } from '@/utils/routes'
 import { merge } from '@/utils/tw-werge'
 
-interface RoutesProps {
-  session: Session | null
-}
-
-export function Routes({ session }: RoutesProps) {
+export function Routes() {
   const pathName = usePathname()
+  const { data } = useSession()
 
   return (
     <nav className="flex w-full flex-1 flex-col items-start">
       <ul>
         {routes.map(({ icon: Icon, ...route }) => {
-          if (route.requireSession && !session) return null
+          if (route.requireSession && !data) return null
 
           const sameRoute =
             pathName === route.path || pathName.includes(route.path)

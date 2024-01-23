@@ -6,6 +6,8 @@ import { getServerSession } from 'next-auth'
 
 import { SessionProvider } from '@/contexts/session'
 
+import { authOptions } from './api/auth/[...nextauth]/auth-options'
+
 const nunitoSans = NunitoSans({
   subsets: ['latin'],
   variable: '--font-nunito_sans',
@@ -24,7 +26,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const session = await getServerSession()
+  const session = await getServerSession(authOptions)
   return (
     <html lang="pt" className={nunitoSans.variable}>
       <body className="bg-bw-gray-800 text-bw-gray-100 antialiased">
