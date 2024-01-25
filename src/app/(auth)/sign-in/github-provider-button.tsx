@@ -1,11 +1,17 @@
 'use client'
 
 import Image from 'next/image'
-import { signIn } from 'next-auth/react'
+import { signIn, SignInOptions } from 'next-auth/react'
 
-export function GithubProviderButton() {
+interface GithubProviderButtonProps {
+  signInOptions?: SignInOptions
+}
+
+export function GithubProviderButton({
+  signInOptions,
+}: GithubProviderButtonProps) {
   async function handleSignIn() {
-    await signIn('github')
+    await signIn('github', signInOptions)
   }
 
   return (

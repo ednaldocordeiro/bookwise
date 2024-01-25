@@ -5,12 +5,12 @@ import { useSession } from 'next-auth/react'
 
 export function RatingButton() {
   const router = useRouter()
-  const session = useSession()
-
-  console.log(session)
+  const { data } = useSession()
 
   async function handleRatingBook() {
-    router.push('/sign-in')
+    if (!data) {
+      return router.push('/sign-in')
+    }
   }
 
   return (

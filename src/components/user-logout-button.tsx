@@ -14,6 +14,8 @@ export function UserLogoutButton() {
     })
   }
 
+  if (!data) return null
+
   return (
     <button
       className="flex items-center gap-3 bg-transparent"

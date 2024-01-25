@@ -1,11 +1,17 @@
 'use client'
 
 import Image from 'next/image'
-import { signIn } from 'next-auth/react'
+import { signIn, SignInOptions } from 'next-auth/react'
 
-export function GoogleProviderButton() {
+interface GoogleProviderButtonProps {
+  signInOptions?: SignInOptions
+}
+
+export function GoogleProviderButton({
+  signInOptions,
+}: GoogleProviderButtonProps) {
   async function handleSignIn() {
-    await signIn('google')
+    await signIn('google', signInOptions)
   }
 
   return (
