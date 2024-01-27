@@ -1,5 +1,6 @@
-import { Bookmark, BookOpen, BookX, Star } from 'lucide-react'
+import { Bookmark, BookOpen, Star } from 'lucide-react'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 import { Book } from '@/data/books'
 import { api } from '@/utils/api'
@@ -30,17 +31,10 @@ async function getBook(
 }
 
 export async function BookInfo({ id }: BookInfoProps) {
-  const { book, message } = await getBook(id)
+  const { book } = await getBook(id)
 
   if (!book) {
-    return (
-      <div className="flex h-full flex-col items-center justify-center gap-5">
-        <BookX className="h-12 w-12 text-bw-gray-400" />
-        <p className="max-w-60 select-none text-center text-bw-gray-400">
-          {message || 'Ops! Não conseguimos encontrar esse livro.'}
-        </p>
-      </div>
-    )
+    notFound()
   }
 
   return (

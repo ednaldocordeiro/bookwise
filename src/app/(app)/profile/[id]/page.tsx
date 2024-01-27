@@ -1,5 +1,8 @@
+import { notFound } from 'next/navigation'
+import { getServerSession } from 'next-auth'
 import { Suspense } from 'react'
 
+import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
 import { LoaderUserInfo } from '@/components/content-loaders/user-info'
 import { LoaderUserRatings } from '@/components/content-loaders/user-ratings'
 
@@ -16,7 +19,15 @@ interface BookPageProps {
   searchParams: UserRatingsSearchParams
 }
 
-export default function ProfilePage({ params, searchParams }: BookPageProps) {
+export default async function ProfilePage({
+  params,
+  searchParams,
+}: BookPageProps) {
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    notFound()
+  }
   return (
     <div className="mx-auto my-0 flex h-screen max-w-[1600px] flex-1 flex-col p-10">
       <header className="sticky top-0 mt-5 flex items-center gap-3 bg-bw-gray-800/15 py-3 backdrop-blur-md">

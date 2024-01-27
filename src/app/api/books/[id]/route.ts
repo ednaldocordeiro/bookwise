@@ -15,6 +15,10 @@ export async function GET(
       },
     })
 
+    if (!book) {
+      return Response.json({ error: 'Book not found' })
+    }
+
     const categories = await prisma.categoriesOnBooks.findMany({
       where: {
         book_id: id,

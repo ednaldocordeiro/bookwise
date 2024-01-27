@@ -1,4 +1,5 @@
 import { User } from 'lucide-react'
+import { notFound } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 import { Suspense } from 'react'
 
@@ -20,6 +21,10 @@ interface ProfileProps {
 
 export default async function Profile({ searchParams }: ProfileProps) {
   const session = await getServerSession(authOptions)
+
+  if (!session) {
+    notFound()
+  }
 
   return (
     <div className="mx-auto my-0 flex h-screen max-w-[1600px] flex-1 flex-col p-10">
