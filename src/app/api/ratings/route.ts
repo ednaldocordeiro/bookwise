@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export const bodySchema = z.object({
+const bodySchema = z.object({
   rate: z.number().min(0).max(6),
   description: z.string(),
   userId: z.string(),

@@ -1,14 +1,7 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 
 interface RatingProviderProps {
   children: ReactNode
