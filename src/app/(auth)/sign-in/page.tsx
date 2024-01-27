@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
@@ -7,6 +8,10 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
 import { GithubProviderButton } from './github-provider-button'
 import { GoogleProviderButton } from './google-provider-button'
 import { VisitorAccess } from './visitor-access-button'
+
+export const metadata: Metadata = {
+  title: 'Sign-In',
+}
 
 export default async function SignInPage() {
   const session = await getServerSession(authOptions)

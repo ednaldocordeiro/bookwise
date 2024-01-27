@@ -1,4 +1,5 @@
 import { Search } from 'lucide-react'
+import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { LoaderBooks } from '@/components/content-loaders/books'
@@ -14,6 +15,10 @@ export type ExploreSearchParams = {
 }
 interface ExploreProps {
   searchParams: ExploreSearchParams
+}
+
+export const metadata: Metadata = {
+  title: 'Explorar',
 }
 
 export default function Explore({ searchParams }: ExploreProps) {

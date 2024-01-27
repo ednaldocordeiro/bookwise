@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { BookInfo } from '@/app/(app)/books/[id]/book-info'
@@ -11,6 +12,10 @@ interface BookPageProps {
   params: {
     id: string
   }
+}
+
+export const metadata: Metadata = {
+  title: 'Livro',
 }
 
 export default async function BookPage({ params }: BookPageProps) {
