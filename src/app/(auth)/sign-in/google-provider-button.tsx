@@ -26,7 +26,7 @@ export function GoogleProviderButton({
         height={20}
         className="h-5 w-5"
       />
-      <p className="font-bold">Entrar com o Google</p>
+      <p className="font-bold text-bw-gray-200">Entrar com o Google</p>
     </button>
   )
 }

@@ -21,15 +21,15 @@ const avatarVariants = cva('h-20 w-20 rounded-full object-cover', {
 interface AvatarProps
   extends React.ButtonHTMLAttributes<HTMLImageElement>,
     VariantProps<typeof avatarVariants> {
-  image: string
+  image?: string
   userId?: string
-  redirectToProfile: boolean
+  redirectToProfile?: boolean
 }
 
 export function Avatar({
   image,
   userId,
-  redirectToProfile,
+  redirectToProfile = false,
   size,
   className,
   ...props

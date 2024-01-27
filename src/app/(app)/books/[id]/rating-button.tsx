@@ -3,14 +3,13 @@
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 
+import { useRatingForm } from '@/hooks/useRatingForm'
+
 export function RatingButton() {
-  const router = useRouter()
-  const { data } = useSession()
+  const { ratingFormVisible, setRatingFormVisible } = useRatingForm()
 
   async function handleRatingBook() {
-    if (!data) {
-      return router.push('/sign-in')
-    }
+    if (!ratingFormVisible) setRatingFormVisible(true)
   }
 
   return (

@@ -3,6 +3,7 @@ import { api } from '@/utils/api'
 
 import { RatingButton } from './rating-button'
 import { RatingCard } from './rating-card'
+import { RatingForm } from './rating-form'
 
 interface RatingListProps {
   bookId: string
@@ -37,6 +38,7 @@ export async function RatingList({ bookId }: RatingListProps) {
         <RatingButton />
       </div>
       <div className="flex flex-col gap-3">
+        <RatingForm />
         {data.ratings.map((rating) => (
           <RatingCard key={rating.id} {...rating} />
         ))}
