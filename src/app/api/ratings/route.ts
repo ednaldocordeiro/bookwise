@@ -114,6 +114,7 @@ export async function POST(request: NextRequest) {
     revalidateTag('ratings')
     revalidateTag('book')
     revalidatePath('feed')
+    revalidatePath('profile')
 
     return Response.json({}, { status: 201 })
   } catch (error) {
