@@ -10,7 +10,7 @@ export interface Rating {
 }
 
 export interface BookRating {
-  book: Pick<Book, 'author' | 'cover_url' | 'name'>
+  book: Pick<Book, 'id' | 'author' | 'cover_url' | 'name'>
   id: string
   rate: number
   description: string

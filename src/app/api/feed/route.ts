@@ -16,6 +16,7 @@ export async function GET() {
         },
         book: {
           select: {
+            id: true,
             author: true,
             name: true,
             cover_url: true,

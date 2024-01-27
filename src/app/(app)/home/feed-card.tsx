@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { Star } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Avatar } from '@/components/avatar'
 import { FeedItem } from '@/data/feed'
@@ -23,8 +24,13 @@ export async function FeedCard(props: FeedCardProps) {
             redirectToProfile
             userId={props.user_id}
           />
-          <div>
-            <p className="text-base text-bw-gray-100">{props.user.name}</p>
+          <div className="flex flex-col">
+            <Link
+              href={`/profile/${props.user_id}`}
+              className="text-base text-bw-gray-100 hover:text-bw-purple-100"
+            >
+              {props.user.name}
+            </Link>
             <span className="text-sm text-bw-gray-400">
               {dayjs().to(dayjs(props.created_at))}
             </span>
@@ -52,14 +58,22 @@ export async function FeedCard(props: FeedCardProps) {
         />
         <div className="flex flex-col gap-5">
           <div className="flex flex-col">
-            <h1 className="text-xl font-bold text-bw-gray-100">
+            <Link
+              href={`/books/${props.book.id}`}
+              className="text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100"
+            >
               {props.book.name}
-            </h1>
+            </Link>
             <span className="text-bw-gray-400">{props.book.author}</span>
           </div>
           <p className="text-bw-gray-300">
             {props.book.summary}...
-            <span className="text-bw-purple-100">ver mais</span>
+            <Link
+              href={`/books/${props.book.id}`}
+              className="text-bw-purple-100"
+            >
+              ver mais
+            </Link>
           </p>
         </div>
       </div>

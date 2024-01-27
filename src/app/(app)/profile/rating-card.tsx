@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { Star } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { BookRating } from '@/data/ratings'
 
@@ -16,7 +17,7 @@ export function RatingCard(props: RatingCardProps) {
       <time className="text-sm" dateTime={dayjs(props.created_at).toString()}>
         {dayjs().to(dayjs(props.created_at))}
       </time>
-      <div className="flex flex-col gap-10 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 px-8 py-6 transition hover:border-bw-gray-600">
+      <div className="flex flex-col gap-10 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 p-6 transition hover:border-bw-gray-600">
         <div className="flex gap-5">
           <Image
             src={props.book.cover_url}
@@ -26,10 +27,13 @@ export function RatingCard(props: RatingCardProps) {
             className="flex w-28 rounded-lg object-cover"
           />
           <div className="flex flex-col justify-between">
-            <div>
-              <h1 className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100">
+            <div className="flex flex-col">
+              <Link
+                href={`/books/${props.book.id}`}
+                className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100"
+              >
                 {props.book.name}
-              </h1>
+              </Link>
               <span className="text-bw-gray-400">{props.book.author}</span>
             </div>
             <div className="flex flex-col gap-1">

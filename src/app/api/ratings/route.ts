@@ -26,6 +26,7 @@ export async function GET(request: NextRequest) {
         select: {
           book: {
             select: {
+              id: true,
               cover_url: true,
               name: true,
               author: true,
@@ -55,6 +56,7 @@ export async function GET(request: NextRequest) {
       select: {
         book: {
           select: {
+            id: true,
             cover_url: true,
             name: true,
             author: true,

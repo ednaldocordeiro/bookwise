@@ -10,6 +10,7 @@ export interface FeedItem {
     image: string
   }
   book: {
+    id: string
     author: string
     name: string
     cover_url: string
