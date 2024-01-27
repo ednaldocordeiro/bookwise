@@ -5,10 +5,11 @@ import { memo } from 'react'
 
 import { GithubProviderButton } from '@/app/(auth)/sign-in/github-provider-button'
 import { GoogleProviderButton } from '@/app/(auth)/sign-in/google-provider-button'
+import { env } from '@/env'
 
 function SignInRequestComponent() {
   const path = usePathname()
-  const basePath = process.env.NEXT_PUBLIC_API_BASE_URL
+  const basePath = env.NEXT_PUBLIC_API_BASE_URL
 
   const callbackUrl = new URL(path, basePath)
 
