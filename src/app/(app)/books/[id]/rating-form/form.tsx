@@ -1,7 +1,11 @@
-import { Check, Star, X } from 'lucide-react'
+'use client'
+
+import { Check, X } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
 import { Avatar } from '@/components/avatar'
+
+import { Evaluation } from './evaluation'
 
 interface FormProps {
   available: boolean
@@ -18,13 +22,7 @@ export function Form({ available }: FormProps) {
             {data?.user.name}
           </span>
         </div>
-        <div className="flex gap-1">
-          <Star className="text-bw-purple-100" />
-          <Star className="text-bw-purple-100" />
-          <Star className="text-bw-purple-100" />
-          <Star className="text-bw-purple-100" />
-          <Star className="text-bw-purple-100" />
-        </div>
+        <Evaluation onChangeValue={(value) => console.log(value)} />
       </header>
       <label htmlFor="rate" className="hidden">
         Avaliação
