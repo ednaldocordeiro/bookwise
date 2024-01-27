@@ -1,7 +1,10 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Check, X } from 'lucide-react'
 import { useSession } from 'next-auth/react'
+import { Controller, useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 import { Avatar } from '@/components/avatar'
 
@@ -11,10 +14,36 @@ interface FormProps {
   available: boolean
 }
 
+const ratingFormSchema = z.object({
+  rate: z.number().min(0).max(6),
+  description: z
+    .string()
+    .max(250, 'Sua avaliação está muito grande. O máximo é de 250 caracteres'),
+})
+
+type RatingData = z.infer<typeof ratingFormSchema>
+
 export function Form({ available }: FormProps) {
   const { data } = useSession()
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+    reset,
+  } = useForm<RatingData>({
+    resolver: zodResolver(ratingFormSchema),
+  })
+
+  async function handleSubmitForm(data: RatingData) {
+    console.log(data)
+  }
+
   return (
-    <form className="flex flex-col gap-10 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 px-8 py-6 transition hover:border-bw-gray-600">
+    <form
+      onSubmit={handleSubmit(handleSubmitForm)}
+      className="flex flex-col gap-10 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 px-8 py-6 transition hover:border-bw-gray-600"
+    >
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Avatar image={data?.user.image} />
@@ -22,29 +51,35 @@ export function Form({ available }: FormProps) {
             {data?.user.name}
           </span>
         </div>
-        <Evaluation onChangeValue={(value) => console.log(value)} />
+        <Controller
+          name="rate"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <Evaluation onChangeValue={onChange} value={value} />
+          )}
+        />
       </header>
-      <label htmlFor="rate" className="hidden">
+      <label htmlFor="description" className="hidden">
         Avaliação
       </label>
       <textarea
-        name="rate"
         id="rate"
         rows={10}
         placeholder="Escreva sua avaliação"
-        disabled={!available}
+        disabled={!available || isSubmitting}
         className="h-40 resize-none rounded border border-bw-gray-500 bg-bw-gray-800 px-4 py-4"
+        {...register('description')}
       />
       <footer className="flex gap-2 self-end">
         <button
-          disabled={!available}
-          type="reset"
+          disabled={!available || isSubmitting}
           className="flex items-center justify-center rounded bg-bw-gray-600 p-2"
+          onClick={() => reset()}
         >
           <X className="text-bw-purple-100" />
         </button>
         <button
-          disabled={!available}
+          disabled={!available || isSubmitting}
           type="submit"
           className="flex items-center justify-center rounded bg-bw-gray-600 p-2"
         >
