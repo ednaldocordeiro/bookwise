@@ -15,6 +15,9 @@ async function getRatings(
   try {
     const response = await api(`/books/${bookId}/ratings`, {
       cache: 'no-store',
+      next: {
+        tags: ['ratings'],
+      },
     })
 
     const data = await response.json()

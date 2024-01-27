@@ -25,6 +25,9 @@ export async function GET(
           },
         },
       },
+      orderBy: {
+        created_at: 'desc',
+      },
     })
 
     return Response.json({ ratings: bookRatings })

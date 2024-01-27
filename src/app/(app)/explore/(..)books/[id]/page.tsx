@@ -5,6 +5,7 @@ import { RatingList } from '@/app/(app)/books/[id]/rating-list'
 import { LoaderBookInfo } from '@/components/content-loaders/book-info'
 import { LoadRatings } from '@/components/content-loaders/ratings'
 import { Modal } from '@/components/modal'
+import { RatingProvider } from '@/contexts/rating'
 
 interface BookPageProps {
   params: {
@@ -19,9 +20,11 @@ export default async function BookPage({ params }: BookPageProps) {
         <Suspense fallback={<LoaderBookInfo />}>
           <BookInfo id={params.id} />
         </Suspense>
-        <Suspense fallback={<LoadRatings />}>
-          <RatingList bookId={params.id} />
-        </Suspense>
+        <RatingProvider>
+          <Suspense fallback={<LoadRatings />}>
+            <RatingList bookId={params.id} />
+          </Suspense>
+        </RatingProvider>
       </div>
     </Modal>
   )

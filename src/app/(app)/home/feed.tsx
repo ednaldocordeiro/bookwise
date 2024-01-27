@@ -8,6 +8,7 @@ async function getFeed(): Promise<FeedItem[] | undefined> {
     const response = await api('/feed', {
       next: {
         revalidate: 60 * 30, // 30 min
+        tags: ['feed'],
       },
     })
     const feed = await response.json()

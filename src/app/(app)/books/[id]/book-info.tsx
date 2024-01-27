@@ -4,8 +4,6 @@ import Image from 'next/image'
 import { Book } from '@/data/books'
 import { api } from '@/utils/api'
 
-import { BookCard } from './book-card'
-
 interface BookInfoProps {
   id: string
 }
@@ -16,7 +14,7 @@ async function getBook(
   try {
     const response = await api(`/books/${id}`, {
       next: {
-        revalidate: 60 * 60, // 1 hour
+        tags: ['book'],
       },
     })
 
