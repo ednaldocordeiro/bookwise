@@ -60,7 +60,6 @@ export async function GET(request: NextRequest) {
 
     return Response.json({ books })
   } catch (error) {
-    console.log(error)
     return Response.json(
       { message: 'Não foi possível encontrar os livros' },
       { status: 403 },

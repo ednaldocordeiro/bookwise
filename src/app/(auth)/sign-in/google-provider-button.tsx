@@ -1,7 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { signIn, SignInOptions } from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
+import { signIn, SignInOptions, useSession } from 'next-auth/react'
+
+import { env } from '@/env'
 
 interface GoogleProviderButtonProps {
   signInOptions?: SignInOptions
@@ -10,14 +13,30 @@ interface GoogleProviderButtonProps {
 export function GoogleProviderButton({
   signInOptions,
 }: GoogleProviderButtonProps) {
+  const { status } = useSession()
+  const searchParams = useSearchParams()
+
+  const basePath = env.NEXT_PUBLIC_API_BASE_URL
+
+  const callbackUrlPath = searchParams.get('callbackUrl')
+  const callbackUrl = callbackUrlPath
+    ? new URL(callbackUrlPath, basePath).toString()
+    : undefined
+
+  const options: SignInOptions = signInOptions ?? {
+    callbackUrl,
+    redirect: !!callbackUrl,
+  }
+
   async function handleSignIn() {
-    await signIn('google', signInOptions)
+    await signIn('google', options)
   }
 
   return (
     <button
       className="flex w-full gap-5 rounded-lg bg-gray-600 px-6 py-4 transition hover:bg-gray-500"
       onClick={handleSignIn}
+      disabled={status === 'loading'}
     >
       <Image
         src="/google-logo.png"

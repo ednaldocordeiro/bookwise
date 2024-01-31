@@ -18,10 +18,11 @@ export const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, user }) {
+    async session({ session, user, token }) {
       return {
         ...session,
         user,
+        token,
       }
     },
   },
