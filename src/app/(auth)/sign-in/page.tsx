@@ -1,9 +1,5 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth'
-
-import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
 
 import { GithubProviderButton } from './github-provider-button'
 import { GoogleProviderButton } from './google-provider-button'
@@ -14,12 +10,6 @@ export const metadata: Metadata = {
 }
 
 export default async function SignInPage() {
-  const session = await getServerSession(authOptions)
-
-  if (session !== null) {
-    redirect('/home')
-  }
-
   return (
     <div className="flex h-screen gap-6 p-5">
       <div className="flex h-full items-center justify-center">

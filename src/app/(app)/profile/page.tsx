@@ -1,12 +1,10 @@
 import { User } from 'lucide-react'
 import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { getServerSession } from 'next-auth'
 import { Suspense } from 'react'
 
-import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options'
 import { LoaderUserInfo } from '@/components/content-loaders/user-info'
 import { LoaderUserRatings } from '@/components/content-loaders/user-ratings'
+import { serverSession } from '@/lib/auth/get-server-session'
 
 import { SearchForm } from './search-form'
 import { UserInfo } from './user-info'
@@ -25,11 +23,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Profile({ searchParams }: ProfileProps) {
-  const session = await getServerSession(authOptions)
-
-  if (!session) {
-    notFound()
-  }
+  const session = await serverSession()
 
   return (
     <div className="mx-auto my-0 flex h-screen max-w-[1600px] flex-1 flex-col p-10">
