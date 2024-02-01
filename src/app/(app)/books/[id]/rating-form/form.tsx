@@ -10,6 +10,7 @@ import { Avatar } from '@/components/avatar'
 import { useRatingForm } from '@/hooks/useRatingForm'
 import { api } from '@/utils/api'
 
+import { createRate } from './create-rate'
 import { Evaluation } from './evaluation'
 import { RatingData, ratingFormSchema } from './schema'
 
@@ -26,8 +27,9 @@ export function Form({ available }: FormProps) {
     register,
     control,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
     reset,
+    setError,
   } = useForm<RatingData>({
     resolver: zodResolver(ratingFormSchema),
     defaultValues: {
@@ -38,20 +40,36 @@ export function Form({ available }: FormProps) {
   const bookId = params.id
 
   async function handleSubmitForm(data: RatingData) {
-    const body = {
-      ...data,
-      userId: session?.user.id,
-      bookId,
-    }
-    await api('/ratings', {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    if (session?.user.id) {
+      const body = {
+        ...data,
+        userId: session?.user.id,
+        bookId,
+      }
 
-    setRatingFormVisible(false)
+      const response = await createRate(body)
+      // await api('/ratings', {
+      //   method: 'POST',
+      //   body: JSON.stringify(body),
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // })
+
+      console.log(response)
+
+      response.success && setRatingFormVisible(false)
+
+      setError('root', {
+        message: response.message,
+      })
+
+      return
+    }
+
+    setError('root', {
+      message: 'Algo deu errado.',
+    })
   }
 
   return (
@@ -77,19 +95,26 @@ export function Form({ available }: FormProps) {
       <label htmlFor="description" className="hidden">
         Avaliação
       </label>
-      <textarea
-        id="rate"
-        rows={10}
-        placeholder="Escreva sua avaliação"
-        disabled={!available || isSubmitting}
-        className="h-40 resize-none rounded border border-bw-gray-500 bg-bw-gray-800 px-4 py-4 text-bw-gray-200"
-        {...register('description')}
-      />
+      <div className="flex flex-col gap-2">
+        <textarea
+          id="rate"
+          rows={10}
+          placeholder="Escreva sua avaliação..."
+          disabled={!available || isSubmitting}
+          className="h-52 resize-none rounded border border-bw-gray-500 bg-bw-gray-800 px-4 py-4 text-bw-gray-200"
+          {...register('description')}
+        />
+        <span className="text-red-600">
+          {(errors.root && errors.root.message) ||
+            (errors.description && errors.description.message)}
+        </span>
+      </div>
       <footer className="flex gap-2 self-end">
         <button
           disabled={!available || isSubmitting}
           className="flex items-center justify-center rounded bg-bw-gray-600 p-2"
           onClick={() => reset()}
+          type="button"
         >
           <X className="text-bw-purple-100" />
         </button>

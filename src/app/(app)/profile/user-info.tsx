@@ -22,6 +22,7 @@ async function getUserInfo(
     const response = await api(`/users/${id}`, {
       next: {
         revalidate: 60 * 30,
+        tags: ['user-info'],
       },
     })
 

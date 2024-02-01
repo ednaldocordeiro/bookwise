@@ -23,6 +23,7 @@ async function getUserRatings(
     const response = await api(`/ratings?userId=${id}&${params.toString()}`, {
       next: {
         revalidate: 60 * 30,
+        tags: ['user-ratings'],
       },
     })
 
