@@ -26,4 +26,8 @@ export const authOptions: AuthOptions = {
       }
     },
   },
+  session: {
+    maxAge: 60 * 60 * 24 * 3, // 3 days
+    updateAge: 60 * 60 * 24,
+  },
 }

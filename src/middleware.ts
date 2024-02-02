@@ -10,9 +10,6 @@ export default withAuth({
       return true
     },
   },
-  pages: {
-    signIn: 'sign-in',
-  },
 })
 
 export const config = { matcher: ['/profile', '/profile/:id*'] }

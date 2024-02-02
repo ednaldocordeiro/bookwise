@@ -18,6 +18,7 @@ export async function GET(request: NextRequest) {
           book: {
             name: {
               contains: query || '',
+              mode: 'insensitive',
             },
           },
         },

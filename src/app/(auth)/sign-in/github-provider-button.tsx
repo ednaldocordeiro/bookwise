@@ -24,8 +24,8 @@ export function GithubProviderButton({
     : undefined
 
   const options: SignInOptions = signInOptions ?? {
-    callbackUrl,
-    redirect: !!callbackUrl,
+    callbackUrl: callbackUrl || '/home',
+    redirect: true,
   }
 
   async function handleSignIn() {

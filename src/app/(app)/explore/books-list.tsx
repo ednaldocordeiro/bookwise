@@ -16,9 +16,7 @@ async function getPopularBook(
     const url = `/books?${params.toString()}`
 
     const response = await api(url, {
-      next: {
-        revalidate: 60 * 30, // 30 min
-      },
+      cache: 'no-store',
     })
 
     const books = await response.json()
