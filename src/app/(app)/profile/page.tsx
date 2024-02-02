@@ -1,5 +1,6 @@
 import { User } from 'lucide-react'
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
 import { LoaderUserInfo } from '@/components/content-loaders/user-info'
@@ -24,6 +25,10 @@ export const metadata: Metadata = {
 
 export default async function Profile({ searchParams }: ProfileProps) {
   const session = await serverSession()
+
+  if (!session) {
+    notFound()
+  }
 
   return (
     <div className="mx-auto my-0 flex h-screen max-w-[1600px] flex-1 flex-col p-10">

@@ -1,8 +1,10 @@
 import { Metadata } from 'next'
+import { notFound, redirect } from 'next/navigation'
 import { Suspense } from 'react'
 
 import { LoaderUserInfo } from '@/components/content-loaders/user-info'
 import { LoaderUserRatings } from '@/components/content-loaders/user-ratings'
+import { serverSession } from '@/lib/auth/get-server-session'
 
 import { UserRatingsSearchParams } from '../page'
 import { SearchForm } from '../search-form'
@@ -25,6 +27,11 @@ export default async function ProfilePage({
   params,
   searchParams,
 }: BookPageProps) {
+  const session = await serverSession()
+
+  if (!session) {
+    redirect('/sign-in')
+  }
   return (
     <div className="mx-auto my-0 flex h-screen max-w-[1600px] flex-1 flex-col p-10">
       <header className="sticky top-0 mt-5 flex items-center gap-3 bg-bw-gray-800/15 py-3 backdrop-blur-md">
