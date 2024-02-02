@@ -15,3 +15,5 @@ Para a contrução da interface, utiliza p [**TailwindCSS**](https://tailwindcss
 Além disso, paro o back-end, o projeto conta com o uso do [**NextAuth**](https://next-auth.js.org/) para conseguir autenticar o usuário e fazer um controle de rotas e avaliação de livros.
 
 Para armazenar essas informações utiliza de um banco dados Postgres _serveless_, disponibilizado na nuvem pelo [**Neon Tech**](https://neon.tech/), utilizando o [**Prisma**](https://www.prisma.io/) para realizar as consultas e operações de escrita no banco de dados.
+
+![](/bookwise.png)
