@@ -1,36 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bookwise
 
-## Getting Started
+Um projeto desenvolvido para a pratica das features mais recentes do NextJS.
 
-First, run the development server:
+Bookwise é um sistema de avaliação de livros. Essas avaliações podem ser acessadas publicamente, sem a necessidade de autenticação.  
+Todavia avaliar algum livro ou acessar perfis de avalidadores é necessário estar autenticado.
+É possivel acessar avaliações mais recentes e os livros mais avalidados, alem de ter essa visualização por livro e por avaliador.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Techs
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O projeto conta com o uso da App Router do [**NextJS**](https://nextjs.org/), que utiliza os Server Components para contruir as rotas usando o [**React**](https://react.dev/) totalmente no lado do servidor.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para a contrução da interface, utiliza p [**TailwindCSS**](https://tailwindcss.com/) para estilizar as páginas.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Além disso, paro o back-end, o projeto conta com o uso do [**NextAuth**](https://next-auth.js.org/) para conseguir autenticar o usuário e fazer um controle de rotas e avaliação de livros.
 
-## Learn More
+Para armazenar essas informações utiliza de um banco dados Postgres _serveless_, disponibilizado na nuvem pelo [**Neon Tech**](https://neon.tech/), utilizando o [**Prisma**](https://www.prisma.io/) para realizar as consultas e operações de escrita no banco de dados.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![](/bookwise.png)
