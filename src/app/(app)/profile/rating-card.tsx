@@ -29,6 +29,7 @@ export function RatingCard(props: RatingCardProps) {
           <div className="flex flex-col justify-between">
             <div className="flex flex-col">
               <Link
+                prefetch={false}
                 href={`/books/${props.book.id}`}
                 className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100"
               >

@@ -12,6 +12,7 @@ export function PopularBooks() {
             Livros populares
           </h2>
           <Link
+            prefetch={false}
             href="/explore"
             className="flex items-center gap-2 text-sm text-bw-purple-100"
           >

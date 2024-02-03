@@ -28,6 +28,7 @@ export async function FeedCard(props: FeedCardProps) {
             <Link
               href={`/profile/${props.user_id}`}
               className="text-base text-bw-gray-100 hover:text-bw-purple-100"
+              prefetch={false}
             >
               {props.user.name}
             </Link>
@@ -61,6 +62,7 @@ export async function FeedCard(props: FeedCardProps) {
             <Link
               href={`/books/${props.book.id}`}
               className="text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100"
+              prefetch={false}
             >
               {props.book.name}
             </Link>
@@ -71,6 +73,7 @@ export async function FeedCard(props: FeedCardProps) {
             <Link
               href={`/books/${props.book.id}`}
               className="text-bw-purple-100"
+              prefetch={false}
             >
               ver mais
             </Link>
