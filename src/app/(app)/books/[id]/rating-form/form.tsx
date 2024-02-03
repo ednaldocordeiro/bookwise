@@ -48,21 +48,14 @@ export function Form({ available }: FormProps) {
       }
 
       const response = await createRate(body)
-      // await api('/ratings', {
-      //   method: 'POST',
-      //   body: JSON.stringify(body),
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // })
 
-      console.log(response)
-
-      response.success && setRatingFormVisible(false)
-
-      setError('root', {
-        message: response.message,
-      })
+      if (response.success) {
+        setRatingFormVisible(false)
+      } else {
+        setError('root', {
+          message: response.message,
+        })
+      }
 
       return
     }

@@ -35,6 +35,19 @@ const config: Config = {
           'linear-gradient(180deg, rgba(127,209,204,1) 0%, rgba(150,148,245,1) 100%)',
         sidebar: 'url("/background.svg")',
       },
+      keyframes: {
+        'show-modal': {
+          '0%': {
+            transform: 'translateY(-400px)',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        'show-modal': 'show-modal 200ms ease-out',
+      },
     },
   },
   plugins: [],
