@@ -45,9 +45,6 @@ const config: Config = {
           },
         },
       },
-      animation: {
-        'show-modal': 'show-modal 200ms ease-out',
-      },
     },
   },
   plugins: [],
