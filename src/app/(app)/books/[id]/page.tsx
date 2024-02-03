@@ -4,6 +4,8 @@ import { Suspense } from 'react'
 import { LoaderBookInfo } from '@/components/content-loaders/book-info'
 import { LoadRatings } from '@/components/content-loaders/ratings'
 import { RatingProvider } from '@/contexts/rating'
+import { Book } from '@/data/books'
+import { api } from '@/utils/api'
 
 import { BookInfo } from './book-info'
 import { RatingList } from './rating-list'
@@ -14,8 +16,23 @@ interface BookPageProps {
   }
 }
 
-export const metadata: Metadata = {
-  title: 'Livro',
+export async function generateMetadata({
+  params,
+}: BookPageProps): Promise<Metadata> {
+  const bookId = params.id
+
+  const response = await api(`/books/${bookId}`, {
+    next: {
+      tags: ['book'],
+    },
+  })
+
+  const data: { book: Book } = await response.json()
+
+  return {
+    title: data.book.name,
+    description: data.book.summary,
+  }
 }
 
 export default async function BookPage({ params }: BookPageProps) {
