@@ -8,7 +8,6 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { Avatar } from '@/components/avatar'
 import { useRatingForm } from '@/hooks/useRatingForm'
-import { api } from '@/utils/api'
 
 import { createRate } from './create-rate'
 import { Evaluation } from './evaluation'

@@ -28,15 +28,17 @@ export function GoogleProviderButton({
     redirect: true,
   }
 
+  const disabled = ['loading', 'authenticated'].includes(status)
+
   async function handleSignIn() {
     await signIn('google', options)
   }
 
   return (
     <button
-      className="flex w-full gap-5 rounded-lg bg-gray-600 px-6 py-4 transition hover:bg-gray-500"
+      className="flex w-full gap-5 rounded-lg bg-gray-600 px-6 py-4 transition"
       onClick={handleSignIn}
-      disabled={status === 'loading'}
+      disabled={disabled}
     >
       <Image
         src="/google-logo.png"
