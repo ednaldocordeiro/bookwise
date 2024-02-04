@@ -42,20 +42,20 @@ export async function FeedCard(props: FeedCardProps) {
             return (
               <Star
                 key={index}
-                className="text-bw-purple-100"
+                className="text-bw-purple-100 max-sm:h-4 max-sm:w-4"
                 fill={index + 1 <= props.rate ? '#8381D9' : 'transparent'}
               />
             )
           })}
         </div>
       </header>
-      <div className="flex gap-5">
+      <div className="flex gap-5 max-sm:flex-col">
         <Image
           src={props.book.cover_url}
           alt=""
-          width={500}
-          height={700}
-          className="flex w-[100px] rounded-lg object-cover"
+          width={700}
+          height={900}
+          className="flex w-[100px] rounded-lg object-cover max-sm:h-[200px] max-sm:w-full"
         />
         <div className="flex flex-col gap-5">
           <div className="flex flex-col">

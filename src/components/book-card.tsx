@@ -19,14 +19,14 @@ export function BookCard(props: BookCardProps) {
         alt=""
         width={500}
         height={700}
-        className="flex w-[100px] rounded-lg object-cover"
+        className="flex w-[100px] rounded-lg object-cover max-2xl:w-24 max-xl:w-16 max-lg:w-24"
       />
       <div className="flex flex-col justify-between">
         <div>
           <Link
             prefetch={false}
             href={`/books/${props.id}`}
-            className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100"
+            className="line-clamp-3 text-xl font-bold text-bw-gray-100 hover:text-bw-purple-100 max-2xl:text-lg max-xl:line-clamp-1"
             passHref
           >
             {props.name}
@@ -38,7 +38,7 @@ export function BookCard(props: BookCardProps) {
             return (
               <Star
                 key={index}
-                className="text-bw-purple-100"
+                className="text-bw-purple-100 max-xl:h-4 max-xl:w-4 max-lg:h-5 max-lg:w-5"
                 fill={index + 1 <= props.rate ? '#8381D9' : 'transparent'}
               />
             )

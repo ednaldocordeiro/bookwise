@@ -18,7 +18,7 @@ export function UserLogoutButton() {
 
   return (
     <button
-      className="flex items-center gap-3 bg-transparent"
+      className="flex items-center gap-3 bg-transparent max-2xl:gap-2"
       onClick={handleSignOut}
     >
       <Image
@@ -28,7 +28,7 @@ export function UserLogoutButton() {
         height={60}
         className="h-8 w-8 rounded-full"
       />
-      <span>{data?.user.name}</span>
+      <span className="line-clamp-1">{data?.user.name}</span>
       <LogOut className="text-red-500" />
     </button>
   )
