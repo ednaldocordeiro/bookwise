@@ -18,13 +18,13 @@ export function RatingCard(props: RatingCardProps) {
         {dayjs().to(dayjs(props.created_at))}
       </time>
       <div className="flex flex-col gap-10 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 p-6 transition hover:border-bw-gray-600">
-        <div className="flex gap-5">
+        <div className="flex gap-5 max-sm:flex-col">
           <Image
             src={props.book.cover_url}
             alt=""
             width={500}
             height={700}
-            className="flex w-28 rounded-lg object-cover"
+            className="flex w-28 rounded-lg object-cover max-sm:h-[200px] max-sm:w-full"
           />
           <div className="flex flex-col justify-between">
             <div className="flex flex-col">
@@ -43,7 +43,7 @@ export function RatingCard(props: RatingCardProps) {
                   return (
                     <Star
                       key={index}
-                      className="text-bw-purple-100"
+                      className="text-bw-purple-100 max-sm:h-4 max-sm:w-4"
                       fill={index + 1 <= props.rate ? '#8381D9' : 'transparent'}
                     />
                   )
