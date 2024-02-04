@@ -17,7 +17,7 @@ export function VisitorAccess() {
   return (
     <button
       onClick={handleAccessAsVisitor}
-      className="flex w-full gap-5 rounded-lg bg-gray-600 px-6 py-4"
+      className="flex w-full items-center gap-5 rounded-lg bg-gray-600 px-6 py-4"
     >
       <Rocket className="h-5 w-5 text-bw-purple-100" />
       <p className="font-bold">
