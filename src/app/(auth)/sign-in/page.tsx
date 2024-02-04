@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default async function SignInPage() {
   return (
-    <div className="flex h-screen gap-6 p-5">
-      <div className="flex h-full items-center justify-center">
+    <div className="relative flex h-screen gap-6 p-5">
+      <div className="flex h-full items-center justify-center max-lg:hidden">
         <Image
           className="h-full w-[620px] rounded-2xl object-cover"
           src="/login-image.svg"

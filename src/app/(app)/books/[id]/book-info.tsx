@@ -39,13 +39,13 @@ export async function BookInfo({ id }: BookInfoProps) {
 
   return (
     <div className="flex w-full flex-col gap-10 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 px-8 py-6 transition hover:border-bw-gray-600">
-      <div className="flex gap-5">
+      <div className="flex gap-5 max-sm:flex-col">
         <Image
           src={book.cover_url}
           alt=""
           width={700}
           height={900}
-          className="flex w-[175px] rounded-lg object-cover"
+          className="flex w-[175px] rounded-lg object-cover max-sm:h-52 max-sm:w-full"
         />
         <div className="flex flex-col justify-between">
           <div>
@@ -60,7 +60,7 @@ export async function BookInfo({ id }: BookInfoProps) {
                 return (
                   <Star
                     key={index}
-                    className="text-bw-purple-100"
+                    className="text-bw-purple-100 max-sm:h-4 max-sm:w-4"
                     fill={index + 1 <= book.rate ? '#8381D9' : 'transparent'}
                   />
                 )
@@ -74,7 +74,7 @@ export async function BookInfo({ id }: BookInfoProps) {
         </div>
       </div>
 
-      <div className="flex w-full flex-wrap gap-14 border-t-2 border-bw-gray-600 py-6">
+      <div className="flex w-full flex-wrap gap-14 border-t-2 border-bw-gray-600 py-6 max-sm:gap-10">
         <div className="flex items-center gap-4">
           <Bookmark className="text-bw-green-100" />
           <div>

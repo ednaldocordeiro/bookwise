@@ -69,10 +69,10 @@ export function Form({ available }: FormProps) {
       onSubmit={handleSubmit(handleSubmitForm)}
       className="flex flex-col gap-10 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 px-8 py-6 transition hover:border-bw-gray-600"
     >
-      <header className="flex items-center justify-between">
+      <header className="flex items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-2">
         <div className="flex items-center gap-4">
           <Avatar image={session?.user.image} />
-          <span className="text-xl font-bold text-gray-200">
+          <span className="text-xl font-bold text-gray-200 max-sm:text-lg">
             {session?.user.name}
           </span>
         </div>

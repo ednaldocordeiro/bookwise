@@ -41,7 +41,7 @@ export async function UserInfo({ userId }: UserInfoProps) {
 
   if (!userInfo) {
     return (
-      <div className="sticky top-32 flex h-[calc(100vh-88px)] flex-col items-center justify-center gap-5">
+      <div className="sticky top-32 flex h-[calc(100vh-88px)] flex-col items-center justify-center gap-5 max-2xl:top-16 max-lg:static">
         <BookDashed className="h-12 w-12 text-bw-gray-400" />
         <p className="max-w-60 select-none text-center text-bw-gray-400">
           {message}
@@ -51,8 +51,8 @@ export async function UserInfo({ userId }: UserInfoProps) {
   }
 
   return (
-    <section className="sticky top-32 flex flex-col items-center gap-8">
-      <div className="flex flex-1 flex-col items-center gap-5">
+    <section className="sticky top-32 flex flex-col items-center gap-8 max-2xl:top-16 max-lg:static max-lg:top-0 max-lg:flex-row max-sm:flex-col">
+      <div className="flex flex-1 flex-col items-center gap-5 max-lg:flex-auto">
         <Avatar image={userInfo.image} redirectToProfile={false} size="xl" />
         <div className="flex flex-col items-center">
           <h1 className="text-xl font-bold text-bw-gray-100">
@@ -64,9 +64,9 @@ export async function UserInfo({ userId }: UserInfoProps) {
         </div>
       </div>
 
-      <div className="h-1 w-10 rounded-md bg-bw-gradient-vertical" />
+      <div className="h-1 w-10 rounded-md bg-bw-gradient-vertical max-lg:h-20 max-lg:w-1 max-sm:h-1 max-sm:w-20" />
 
-      <div className="flex flex-col items-center gap-10 px-14 py-5">
+      <div className="flex flex-col items-center gap-10 px-14 py-5 max-lg:flex-wrap">
         <div className="flex w-full items-center justify-start gap-5">
           <BookOpen className="h-8 w-8 text-bw-green-100" />
           <div className="flex flex-col">

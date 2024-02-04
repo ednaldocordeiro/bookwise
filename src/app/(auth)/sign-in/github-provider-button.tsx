@@ -36,7 +36,7 @@ export function GithubProviderButton({
 
   return (
     <button
-      className="flex w-full gap-5 rounded-lg bg-gray-600 px-6 py-4 transition"
+      className="flex w-full items-center gap-5 rounded-lg bg-gray-600 px-6 py-4 transition"
       onClick={handleSignIn}
       disabled={disabled}
     >

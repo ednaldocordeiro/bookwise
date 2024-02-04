@@ -13,7 +13,7 @@ export function Routes() {
 
   return (
     <nav className="flex w-full flex-1 flex-col items-start">
-      <ul>
+      <ul className="max-lg:flex max-lg:gap-4 max-lg:self-center">
         {routes.map(({ icon: Icon, ...route }) => {
           if (route.requireSession && !data) return null
 
@@ -25,13 +25,13 @@ export function Routes() {
               <Link
                 href={route.path}
                 className={merge(
-                  'relative flex w-full items-end gap-4 p-4',
+                  'relative flex w-full items-end gap-4 p-4 max-lg:p-1',
                   sameRoute &&
-                    "before:absolute before:left-0 before:inline-block before:h-6 before:w-[5px] before:rounded-md before:bg-bw-gradient-vertical before:content-['']",
+                    "before:absolute before:left-0 before:inline-block before:h-6 before:w-[5px] before:rounded-md before:bg-bw-gradient-vertical before:content-[''] max-lg:before:-bottom-1 max-lg:before:left-1 max-lg:before:h-[3px] max-lg:before:w-6",
                 )}
               >
                 <Icon />
-                <span>{route.label}</span>
+                <span className="max-lg:hidden">{route.label}</span>
               </Link>
             </li>
           )

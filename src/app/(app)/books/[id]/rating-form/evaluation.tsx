@@ -17,7 +17,7 @@ export function Evaluation({ onChangeValue, value }: EvaluationProps) {
           onClick={() => onChangeValue(index + 1)}
         >
           <Star
-            className="text-bw-purple-100"
+            className="text-bw-purple-100 max-sm:h-4 max-sm:w-4"
             fill={value >= index + 1 ? '#8381D9' : 'transparent'}
           />
         </span>
