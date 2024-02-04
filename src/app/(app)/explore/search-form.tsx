@@ -31,14 +31,14 @@ export function SearchForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="group flex gap-6 rounded border border-bw-gray-500 px-5 py-3 focus-within:border-bw-green-200"
+      className="group flex gap-6 rounded border border-bw-gray-500 px-5 py-3 focus-within:border-bw-green-200 max-sm:w-full"
     >
       <input
         type="text"
         name="q"
         placeholder="Buscar livro ou autor"
         defaultValue={query ?? ''}
-        className="flex max-w-[550px] bg-transparent text-sm outline-none placeholder:text-bw-gray-400"
+        className="flex bg-transparent text-sm outline-none placeholder:text-bw-gray-400 max-sm:w-full"
       />
       <Search className="h-5 w-5 text-bw-gray-500 group-focus-within:text-bw-green-200" />
     </form>

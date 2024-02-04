@@ -37,7 +37,7 @@ export async function generateMetadata({
 
 export default async function BookPage({ params }: BookPageProps) {
   return (
-    <div className="mx-auto my-0 flex max-w-4xl flex-1 flex-col gap-10 p-10">
+    <div className="mx-auto my-0 flex max-w-4xl flex-1 flex-col gap-10 p-10 max-xl:p-6">
       <Suspense fallback={<LoaderBookInfo />}>
         <BookInfo id={params.id} />
       </Suspense>

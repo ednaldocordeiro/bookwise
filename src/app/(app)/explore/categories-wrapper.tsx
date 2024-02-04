@@ -23,7 +23,7 @@ async function getCategories(): Promise<{
 export async function CategoriesWrapper() {
   const data = await getCategories()
   return (
-    <div className="flex items-center justify-start gap-3 overflow-x-scroll py-2">
+    <div className="mb-4 flex max-h-56 items-center justify-start gap-3 overflow-x-scroll bg-bw-gray-800 py-2">
       <CategoryItems items={data.categories} />
     </div>
   )

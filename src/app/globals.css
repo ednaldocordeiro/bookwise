@@ -6,6 +6,7 @@
 /* Estilos da barra vertical */
 ::-webkit-scrollbar {
   width: 8px; /* Largura da barra de rolagem */
+  height: 8px; /* Altura da barra de rolagem */
 }
 
 ::-webkit-scrollbar-track {

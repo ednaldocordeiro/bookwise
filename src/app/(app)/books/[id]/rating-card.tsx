@@ -13,7 +13,7 @@ type RatingCardProps = Rating
 export function RatingCard(props: RatingCardProps) {
   return (
     <div className="flex flex-col gap-10 rounded-lg border-2 border-solid border-transparent bg-bw-gray-700 px-8 py-6 transition hover:border-bw-gray-600">
-      <header className="flex items-center justify-between">
+      <header className="flex items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-2">
         <div className="flex flex-1 items-center gap-4">
           <Image
             src={props.user.image}
@@ -34,7 +34,7 @@ export function RatingCard(props: RatingCardProps) {
             return (
               <Star
                 key={index}
-                className="text-bw-purple-100"
+                className="text-bw-purple-100 max-sm:h-4 max-sm:w-4"
                 fill={index + 1 <= props.rate ? '#8381D9' : 'transparent'}
               />
             )
