@@ -26,7 +26,7 @@ export function UserLogoutButton() {
         alt=""
         width={60}
         height={60}
-        className="h-8 w-8 rounded-full"
+        className="h-8 w-8 rounded-full max-lg:hidden"
       />
       <span className="line-clamp-1 max-lg:hidden">{data?.user.name}</span>
       <LogOut className="text-red-500" />
